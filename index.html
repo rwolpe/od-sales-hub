@@ -3,26 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OD Sales Hub — Ryan Wolpe</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>OBOS — Outbound Operating System</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#080c10;
-  --surface:#0d1219;
-  --card:#111820;
-  --card2:#161e28;
+  --bg:#09090b;
+  --surface:#111113;
+  --card:#18181b;
+  --card2:#1f1f23;
   --border:rgba(255,255,255,0.06);
   --border2:rgba(255,255,255,0.1);
-  --text:#e8edf2;
-  --muted:#5a6a7a;
-  --muted2:#8a9aaa;
-  --accent:#00d4aa;
-  --accent2:#0099ff;
-  --accent3:#ff6b35;
-  --accent4:#a855f7;
-  --gold:#f0b429;
+  --text:#fafafa;
+  --muted:#52525b;
+  --muted2:#a1a1aa;
+  --accent:#10b981;
+  --accent2:#3b82f6;
+  --accent3:#f59e0b;
+  --accent4:#a78bfa;
+  --gold:#f59e0b;
   --red:#ef4444;
   --green:#22c55e;
   --yellow:#eab308;
@@ -30,40 +30,39 @@
   --radius2:16px;
 }
 html,body{height:100%;overflow:hidden}
-body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',sans-serif;font-size:14px;display:flex;flex-direction:column}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;display:flex;flex-direction:column}
 
 /* ── TOPBAR ── */
 .topbar{
   display:flex;align-items:center;gap:0;
-  height:52px;background:var(--surface);
+  height:56px;background:var(--surface);
   border-bottom:1px solid var(--border);
   flex-shrink:0;position:relative;z-index:100;
 }
 .topbar-logo{
   padding:0 24px;display:flex;align-items:center;gap:10px;
-  border-right:1px solid var(--border);height:100%;
-  font-family:'Syne',sans-serif;font-weight:800;font-size:16px;
+  height:100%;
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:16px;
   letter-spacing:-0.02em;white-space:nowrap;
 }
 .topbar-logo .od{color:var(--accent)}
 .topbar-logo .badge{
-  background:rgba(0,212,170,0.12);border:1px solid rgba(0,212,170,0.25);
+  background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);
   border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;
-  color:var(--accent);font-family:'DM Mono',monospace;letter-spacing:0.05em;
+  color:var(--accent);font-family:'JetBrains Mono',monospace;letter-spacing:0.05em;
 }
 .topbar-nav{display:flex;align-items:center;height:100%;flex:1}
 .nav-item{
-  height:100%;display:flex;align-items:center;padding:0 18px;
+  height:auto;display:flex;align-items:center;padding:8px 14px;margin:0 2px;
   font-size:13px;font-weight:500;color:var(--muted2);cursor:pointer;
-  border-bottom:2px solid transparent;transition:all 0.15s;white-space:nowrap;
-  border-right:1px solid var(--border);gap:6px;
+  border-radius:8px;transition:all 0.15s;white-space:nowrap;gap:6px;
 }
-.nav-item:hover{color:var(--text);background:rgba(255,255,255,0.03)}
-.nav-item.active{color:var(--accent);border-bottom-color:var(--accent);background:rgba(0,212,170,0.04)}
+.nav-item:hover{color:var(--text);background:rgba(255,255,255,0.04)}
+.nav-item.active{color:var(--text);background:rgba(255,255,255,0.06)}
 .nav-item .nav-icon{font-size:14px;opacity:0.8}
 .topbar-right{
-  margin-left:auto;padding:0 20px;display:flex;align-items:center;gap:12px;
-  border-left:1px solid var(--border);height:100%;
+  margin-left:auto;padding:0 20px;display:flex;align-items:center;gap:14px;
+  height:100%;
 }
 .user-chip{
   display:flex;align-items:center;gap:8px;
@@ -78,7 +77,7 @@ body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',sans-s
 }
 .user-name{font-size:12px;font-weight:600;color:var(--text)}
 .date-chip{
-  font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);
+  font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted2);
   background:var(--card);border:1px solid var(--border);
   border-radius:6px;padding:4px 10px;
 }
@@ -99,7 +98,7 @@ body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',sans-s
 /* ── PAGE HEADERS ── */
 .page-header{margin-bottom:28px}
 .page-header h1{
-  font-family:'Syne',sans-serif;font-weight:800;font-size:26px;
+  font-family:'Outfit',sans-serif;font-weight:800;font-size:26px;
   letter-spacing:-0.03em;margin-bottom:4px;
 }
 .page-header .sub{font-size:13px;color:var(--muted2);font-weight:400}
@@ -119,8 +118,8 @@ body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',sans-s
 .stat-card.c3::before{background:var(--gold)}
 .stat-card.c4::before{background:var(--accent3)}
 .stat-card.c5::before{background:var(--accent4)}
-.stat-label{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:8px;font-family:'DM Mono',monospace}
-.stat-value{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;letter-spacing:-0.03em;line-height:1}
+.stat-label{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:8px;font-family:'JetBrains Mono',monospace}
+.stat-value{font-family:'Outfit',sans-serif;font-size:32px;font-weight:800;letter-spacing:-0.03em;line-height:1}
 .stat-sub{font-size:11px;color:var(--muted2);margin-top:6px}
 .stat-delta{font-size:11px;font-weight:600;margin-top:4px}
 .stat-delta.up{color:var(--green)}
@@ -135,7 +134,7 @@ body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',sans-s
   padding:16px 20px;border-bottom:1px solid var(--border);
   display:flex;align-items:center;justify-content:space-between;
 }
-.card-title{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;letter-spacing:-0.01em}
+.card-title{font-family:'Outfit',sans-serif;font-weight:700;font-size:14px;letter-spacing:-0.01em}
 .card-body{padding:20px}
 
 /* ── BUTTONS ── */
@@ -143,10 +142,10 @@ body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',sans-s
   display:inline-flex;align-items:center;gap:6px;
   padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;
   cursor:pointer;border:none;transition:all 0.15s;white-space:nowrap;
-  font-family:'Instrument Sans',sans-serif;
+  font-family:'Outfit',sans-serif;
 }
 .btn-primary{background:var(--accent);color:#000}
-.btn-primary:hover{background:#00bfa0;transform:translateY(-1px)}
+.btn-primary:hover{background:#0ea572;transform:translateY(-1px)}
 .btn-secondary{background:var(--card2);color:var(--text);border:1px solid var(--border2)}
 .btn-secondary:hover{background:var(--card);border-color:var(--border2)}
 .btn-danger{background:rgba(239,68,68,0.15);color:var(--red);border:1px solid rgba(239,68,68,0.2)}
@@ -162,7 +161,7 @@ table{width:100%;border-collapse:collapse}
 th{
   text-align:left;padding:10px 14px;font-size:11px;font-weight:600;
   color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;
-  border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;
+  border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;
   background:var(--surface);white-space:nowrap;
 }
 td{
@@ -171,17 +170,17 @@ td{
 }
 tr:last-child td{border-bottom:none}
 tr:hover td{background:rgba(255,255,255,0.02)}
-tr.selected td{background:rgba(0,212,170,0.05)}
+tr.selected td{background:rgba(16,185,129,0.05)}
 
 /* ── BADGES ── */
 .badge{
   display:inline-flex;align-items:center;gap:4px;
   border-radius:5px;padding:2px 8px;font-size:11px;font-weight:600;
-  font-family:'DM Mono',monospace;white-space:nowrap;
+  font-family:'JetBrains Mono',monospace;white-space:nowrap;
 }
 .badge-green{background:rgba(34,197,94,0.12);color:var(--green);border:1px solid rgba(34,197,94,0.2)}
 .badge-purple{background:rgba(155,89,182,0.15);color:#9b59b6;border-color:rgba(155,89,182,0.3)}
-.badge-teal{background:rgba(0,212,170,0.15);color:#00d4aa;border-color:rgba(0,212,170,0.3)}
+.badge-teal{background:rgba(16,185,129,0.15);color:#10b981;border-color:rgba(16,185,129,0.3)}
 .badge-orange{background:rgba(230,126,34,0.15);color:#e67e22;border-color:rgba(230,126,34,0.3)}
 .badge-red{background:rgba(231,76,60,0.15);color:#e74c3c;border-color:rgba(231,76,60,0.3)}
 .badge-blue{background:rgba(0,153,255,0.12);color:var(--accent2);border:1px solid rgba(0,153,255,0.2)}
@@ -190,7 +189,7 @@ tr.selected td{background:rgba(0,212,170,0.05)}
 .badge-gold{background:rgba(240,180,41,0.12);color:var(--gold);border:1px solid rgba(240,180,41,0.2)}
 .badge-red{background:rgba(239,68,68,0.12);color:var(--red);border:1px solid rgba(239,68,68,0.2)}
 .badge-muted{background:rgba(255,255,255,0.06);color:var(--muted2);border:1px solid var(--border)}
-.badge-accent{background:rgba(0,212,170,0.12);color:var(--accent);border:1px solid rgba(0,212,170,0.2)}
+.badge-accent{background:rgba(16,185,129,0.12);color:var(--accent);border:1px solid rgba(16,185,129,0.2)}
 
 /* ── STATUS DOTS ── */
 .status-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
@@ -205,15 +204,15 @@ tr.selected td{background:rgba(0,212,170,0.05)}
 .score-bar{display:flex;align-items:center;gap:8px}
 .score-track{flex:1;height:5px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden;min-width:60px}
 .score-fill{height:100%;border-radius:3px;transition:width 0.3s}
-.score-num{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;width:28px;text-align:right}
+.score-num{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;width:28px;text-align:right}
 
 /* ── FORMS ── */
 .form-group{margin-bottom:16px}
-.form-label{font-size:12px;font-weight:600;color:var(--muted2);margin-bottom:6px;display:block;text-transform:uppercase;letter-spacing:0.04em;font-family:'DM Mono',monospace}
+.form-label{font-size:12px;font-weight:600;color:var(--muted2);margin-bottom:6px;display:block;text-transform:uppercase;letter-spacing:0.04em;font-family:'JetBrains Mono',monospace}
 .form-input,.form-select,.form-textarea{
   width:100%;background:var(--surface);border:1px solid var(--border2);
   border-radius:8px;padding:10px 14px;font-size:13px;color:var(--text);
-  font-family:'Instrument Sans',sans-serif;outline:none;transition:border-color 0.15s;
+  font-family:'Outfit',sans-serif;outline:none;transition:border-color 0.15s;
 }
 .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--accent)}
 .form-textarea{resize:vertical;min-height:100px;line-height:1.6}
@@ -225,7 +224,7 @@ tr.selected td{background:rgba(0,212,170,0.05)}
 .search-input{
   width:100%;background:var(--surface);border:1px solid var(--border);
   border-radius:8px;padding:9px 14px 9px 38px;font-size:13px;color:var(--text);
-  font-family:'Instrument Sans',sans-serif;outline:none;
+  font-family:'Outfit',sans-serif;outline:none;
 }
 .search-input:focus{border-color:var(--accent)}
 .search-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:14px}
@@ -237,13 +236,13 @@ tr.selected td{background:rgba(0,212,170,0.05)}
   border-radius:4px;padding:2px 8px;font-size:11px;color:var(--muted2);
   cursor:pointer;transition:all 0.15s;
 }
-.tag:hover,.tag.active{background:rgba(0,212,170,0.1);border-color:rgba(0,212,170,0.3);color:var(--accent)}
+.tag:hover,.tag.active{background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.3);color:var(--accent)}
 .tag-remove{opacity:0.5;font-size:10px;margin-left:2px;cursor:pointer}
 .tag-remove:hover{opacity:1;color:var(--red)}
 
 /* ── KANBAN ── */
 .kanban{display:grid;grid-template-columns:repeat(8,minmax(160px,1fr));gap:10px;align-items:start;overflow-x:auto;padding-bottom:8px}
-.kanban-col.drag-over{border:2px dashed var(--accent)!important;background:rgba(0,212,170,0.06)!important}
+.kanban-col.drag-over{border:2px dashed var(--accent)!important;background:rgba(16,185,129,0.06)!important}
 .kanban-card{cursor:grab;transition:transform 0.15s,box-shadow 0.15s}
 .kanban-card:active{cursor:grabbing}
 .kanban-card.dragging{opacity:0.4;transform:scale(0.97)}
@@ -256,7 +255,7 @@ tr.selected td{background:rgba(0,212,170,0.05)}
 .kanban-title{font-size:12px;font-weight:700;letter-spacing:0.02em;display:flex;align-items:center;gap:7px}
 .kanban-count{
   background:rgba(255,255,255,0.08);border-radius:10px;
-  padding:1px 7px;font-size:11px;font-family:'DM Mono',monospace;
+  padding:1px 7px;font-size:11px;font-family:'JetBrains Mono',monospace;
 }
 .kanban-body{padding:10px;display:flex;flex-direction:column;gap:8px;min-height:200px}
 .kanban-card{
@@ -279,7 +278,7 @@ tr.selected td{background:rgba(0,212,170,0.05)}
   display:flex;align-items:center;justify-content:center;font-size:15px;
 }
 .sig-funding{background:rgba(240,180,41,0.12);border:1px solid rgba(240,180,41,0.2)}
-.sig-launch{background:rgba(0,212,170,0.1);border:1px solid rgba(0,212,170,0.2)}
+.sig-launch{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2)}
 .sig-hire{background:rgba(0,153,255,0.1);border:1px solid rgba(0,153,255,0.2)}
 .sig-nil{background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.2)}
 .sig-campaign{background:rgba(255,107,53,0.1);border:1px solid rgba(255,107,53,0.2)}
@@ -287,7 +286,7 @@ tr.selected td{background:rgba(0,212,170,0.05)}
 .signal-content{flex:1;min-width:0}
 .signal-account{font-size:12px;font-weight:700;color:var(--accent);margin-bottom:2px}
 .signal-text{font-size:13px;line-height:1.5;margin-bottom:5px}
-.signal-meta{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:10px;font-family:'DM Mono',monospace}
+.signal-meta{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace}
 .signal-strength{display:flex;align-items:center;gap:4px}
 .strength-dot{width:5px;height:5px;border-radius:50%}
 
@@ -305,7 +304,7 @@ tr.selected td{background:rgba(0,212,170,0.05)}
   cursor:pointer;border:1px solid var(--border);color:var(--muted2);
   transition:all 0.15s;
 }
-.output-tab.active{background:rgba(0,212,170,0.1);border-color:rgba(0,212,170,0.3);color:var(--accent)}
+.output-tab.active{background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.3);color:var(--accent)}
 .output-area{
   flex:1;background:var(--surface);border:1px solid var(--border);
   border-radius:var(--radius2);padding:0;font-size:13px;line-height:1.8;
@@ -319,7 +318,7 @@ tr.selected td{background:rgba(0,212,170,0.05)}
 .gmail-mockup{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.15)}
 .gmail-chrome{background:#f1f3f4;padding:8px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #e0e0e0}
 .gmail-dot{width:12px;height:12px;border-radius:50%}
-.gmail-title{font-size:11px;color:#666;font-family:'DM Mono',monospace;margin:0 auto}
+.gmail-title{font-size:11px;color:#666;font-family:'JetBrains Mono',monospace;margin:0 auto}
 .gmail-header{padding:16px 20px 12px;border-bottom:1px solid #e8eaed}
 .gmail-field{display:flex;gap:8px;margin-bottom:6px;font-size:13px;color:#202124}
 .gmail-field-label{color:#999;min-width:40px;font-size:12px;padding-top:1px}
@@ -334,26 +333,26 @@ tr.selected td{background:rgba(0,212,170,0.05)}
 .nil-concepts-grid{padding:16px;display:flex;flex-direction:column;gap:14px}
 .nil-concept-card{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden}
 .nil-concept-header{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border2)}
-.nil-concept-num{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--border2);line-height:1;min-width:32px}
-.nil-concept-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--text);letter-spacing:-0.01em;text-transform:uppercase}
-.nil-concept-meta{font-size:11px;color:var(--accent);font-family:'DM Mono',monospace;margin-top:2px;letter-spacing:0.04em}
+.nil-concept-num{font-family:'Outfit',sans-serif;font-size:28px;font-weight:800;color:var(--border2);line-height:1;min-width:32px}
+.nil-concept-title{font-family:'Outfit',sans-serif;font-size:16px;font-weight:800;color:var(--text);letter-spacing:-0.01em;text-transform:uppercase}
+.nil-concept-meta{font-size:11px;color:var(--accent);font-family:'JetBrains Mono',monospace;margin-top:2px;letter-spacing:0.04em}
 .nil-concept-badges{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
 .nil-concept-badge{padding:3px 8px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase}
 .nil-concept-body{padding:14px 16px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .nil-concept-field{font-size:12px}
-.nil-concept-field-label{color:var(--muted2);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:3px}
+.nil-concept-field-label{color:var(--muted2);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:3px}
 .nil-concept-field-val{color:var(--text);line-height:1.4}
-.nil-concept-angle{padding:12px 16px;background:rgba(0,212,170,0.06);border-top:1px solid var(--border2);grid-column:span 2;font-size:13px;color:var(--text2);line-height:1.5;font-style:italic}
+.nil-concept-angle{padding:12px 16px;background:rgba(16,185,129,0.06);border-top:1px solid var(--border2);grid-column:span 2;font-size:13px;color:var(--text2);line-height:1.5;font-style:italic}
 .nil-concept-why{padding:10px 16px;background:rgba(251,191,36,0.07);border-top:1px solid var(--border2);font-size:11px;color:var(--gold);display:flex;gap:8px;align-items:flex-start}
 
 /* ── CALL PREP CARD ── */
 .call-prep-card{padding:16px;display:flex;flex-direction:column;gap:12px}
 .call-prep-section{background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden}
 .call-prep-section-header{padding:10px 14px;background:rgba(0,0,0,0.15);border-bottom:1px solid var(--border2);display:flex;align-items:center;gap:8px}
-.call-prep-section-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted2)}
+.call-prep-section-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted2)}
 .call-prep-section-body{padding:14px;font-size:13px;color:var(--text2);line-height:1.6}
 .call-prep-section-body strong{color:var(--text)}
-.call-prep-tag{padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(0,212,170,0.1);color:var(--accent);margin-left:auto}
+.call-prep-tag{padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(16,185,129,0.1);color:var(--accent);margin-left:auto}
 
 /* ── LINKEDIN CARD ── */
 .linkedin-mockup{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.15)}
@@ -362,7 +361,7 @@ tr.selected td{background:rgba(0,212,170,0.05)}
 .linkedin-sender{color:#fff;font-size:13px;font-weight:600}
 .linkedin-sender-title{color:rgba(255,255,255,0.7);font-size:11px}
 .linkedin-body{padding:20px;font-size:14px;line-height:1.6;color:#1c1c1c;min-height:80px}
-.linkedin-char-count{padding:8px 20px 16px;font-size:11px;color:#666;font-family:'DM Mono',monospace}
+.linkedin-char-count{padding:8px 20px 16px;font-size:11px;color:#666;font-family:'JetBrains Mono',monospace}
 .linkedin-footer{padding:10px 16px;border-top:1px solid #e0e0e0;display:flex;gap:8px}
 .linkedin-btn-send{background:#0a66c2;color:#fff;border:none;border-radius:20px;padding:7px 18px;font-size:12px;font-weight:600;cursor:pointer}
 
@@ -397,9 +396,9 @@ tr.selected td{background:rgba(0,212,170,0.05)}
   border:2px dashed var(--border2);border-radius:var(--radius2);
   padding:48px 24px;text-align:center;cursor:pointer;transition:all 0.2s;
 }
-.upload-zone:hover,.upload-zone.drag{border-color:var(--accent);background:rgba(0,212,170,0.04)}
+.upload-zone:hover,.upload-zone.drag{border-color:var(--accent);background:rgba(16,185,129,0.04)}
 .upload-zone .upload-icon{font-size:40px;margin-bottom:12px;display:block}
-.upload-zone h3{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:6px}
+.upload-zone h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:16px;margin-bottom:6px}
 .upload-zone p{font-size:13px;color:var(--muted2)}
 
 /* ── FILTERS ── */
@@ -409,12 +408,12 @@ tr.selected td{background:rgba(0,212,170,0.05)}
   border:1px solid var(--border);color:var(--muted2);cursor:pointer;transition:all 0.15s;
 }
 .filter-chip:hover{border-color:var(--border2);color:var(--text)}
-.filter-chip.active{background:rgba(0,212,170,0.1);border-color:rgba(0,212,170,0.3);color:var(--accent)}
+.filter-chip.active{background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.3);color:var(--accent)}
 
 /* ── PRIORITY RING ── */
 .priority-ring{
   width:38px;height:38px;border-radius:50%;display:flex;align-items:center;
-  justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:13px;
+  justify-content:center;font-family:'Outfit',sans-serif;font-weight:800;font-size:13px;
   flex-shrink:0;border:2px solid;
 }
 .ring-hot{border-color:var(--red);color:var(--red);background:rgba(239,68,68,0.08)}
@@ -438,7 +437,7 @@ tr.selected td{background:rgba(0,212,170,0.05)}
   display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;
   background:var(--card);z-index:1;
 }
-.modal-header h2{font-family:'Syne',sans-serif;font-size:17px;font-weight:700}
+.modal-header h2{font-family:'Outfit',sans-serif;font-size:17px;font-weight:700}
 .modal-body{padding:24px}
 .modal-footer{
   padding:16px 24px;border-top:1px solid var(--border);
@@ -478,7 +477,7 @@ tr.selected td{background:rgba(0,212,170,0.05)}
 /* ── NIL SCORE ── */
 .nil-score{
   display:inline-flex;align-items:center;gap:6px;
-  font-family:'DM Mono',monospace;font-size:12px;font-weight:500;
+  font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;
 }
 .nil-score .score-num{
   font-weight:700;font-size:14px;
@@ -489,7 +488,7 @@ tr.selected td{background:rgba(0,212,170,0.05)}
   text-align:center;padding:60px 24px;color:var(--muted);
 }
 .empty-state .empty-icon{font-size:48px;margin-bottom:16px;display:block;opacity:0.4}
-.empty-state h3{font-family:'Syne',sans-serif;font-size:17px;color:var(--muted2);margin-bottom:8px}
+.empty-state h3{font-family:'Outfit',sans-serif;font-size:17px;color:var(--muted2);margin-bottom:8px}
 .empty-state p{font-size:13px;max-width:300px;margin:0 auto}
 
 /* ── DASHBOARD TOP 15 ── */
@@ -502,7 +501,7 @@ tr.selected td{background:rgba(0,212,170,0.05)}
 }
 .top15-item:hover{border-color:var(--border2);background:var(--card2)}
 .top15-rank{
-  font-family:'Syne',sans-serif;font-weight:800;font-size:18px;
+  font-family:'Outfit',sans-serif;font-weight:800;font-size:18px;
   color:var(--muted);width:28px;text-align:center;flex-shrink:0;
 }
 .top15-rank.top3{color:var(--gold)}
@@ -547,7 +546,7 @@ tr.selected td{background:rgba(0,212,170,0.05)}
 .contact-info{flex:1;min-width:0}
 .contact-name{font-weight:700;font-size:13px;margin-bottom:2px}
 .contact-role{font-size:11px;color:var(--muted2);margin-bottom:3px}
-.contact-email{font-size:11px;color:var(--accent);font-family:'DM Mono',monospace}
+.contact-email{font-size:11px;color:var(--accent);font-family:'JetBrains Mono',monospace}
 
 /* ── NEWS SIGNAL BADGE ── */
 .news-signal{
@@ -555,7 +554,7 @@ tr.selected td{background:rgba(0,212,170,0.05)}
   border-radius:var(--radius);padding:12px 14px;margin-bottom:8px;
 }
 .news-signal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
-.news-source{font-size:10px;color:var(--muted);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.08em}
+.news-source{font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.08em}
 .news-headline{font-size:13px;font-weight:600;line-height:1.4;margin-bottom:4px}
 .news-summary{font-size:12px;color:var(--muted2);line-height:1.5}
 
@@ -566,7 +565,7 @@ tr.selected td{background:rgba(0,212,170,0.05)}
 /* ── SETTINGS ── */
 .settings-section{margin-bottom:28px}
 .settings-section h3{
-  font-family:'Syne',sans-serif;font-weight:700;font-size:14px;
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:14px;
   margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);
 }
 .setting-row{
@@ -587,14 +586,31 @@ tr.selected td{background:rgba(0,212,170,0.05)}
   box-shadow:0 1px 3px rgba(0,0,0,0.3);
 }
 .toggle.on::after{transform:translateX(18px)}
+
+/* ── OBOS RESKIN ADDITIONS ── */
+.ambient-glow{position:fixed;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(16,185,129,0.03) 0%,transparent 70%);pointer-events:none;z-index:0}
+.nav-item.active::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:16px;height:2px;background:var(--accent);border-radius:2px}
+.nav-item{position:relative}
+.topbar-nav{display:flex;align-items:center;height:100%;flex:1;padding-left:8px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.panel.active{animation:fadeUp 0.3s ease both}
+.stat-card{transition:all 0.2s}
+.stat-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.3)}
+.card{transition:all 0.2s}
+.main::-webkit-scrollbar{width:6px}
+.main::-webkit-scrollbar-track{background:transparent}
+.main::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.08);border-radius:3px}
+.main::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,0.15)}
 </style>
 </head>
 <body>
+<div class="ambient-glow"></div>
 
 <!-- TOPBAR -->
 <div class="topbar">
   <div class="topbar-logo">
-    <span><span class="od">OD</span> Sales Hub</span>
+    <div style="width:30px;height:30px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;color:var(--bg);letter-spacing:-0.5px;flex-shrink:0">OB</div>
+    <span style="font-weight:700;letter-spacing:-0.02em">OBOS</span>
     <span class="badge">BETA</span>
   </div>
   <nav class="topbar-nav">
@@ -669,14 +685,17 @@ tr.selected td{background:rgba(0,212,170,0.05)}
             <div class="card-title">⚡ Today's Top 15 Targets</div>
             <div id="top15-subtitle" style="font-size:11px;color:var(--muted);margin-top:2px">Loading...</div>
           </div>
-          <button class="btn btn-sm btn-secondary" onclick="loadAndRenderDailyTargets(true)">↻ Refresh</button>
+          <div style="display:flex;gap:6px;align-items:center">
+            <span id="top15-generated-at" style="font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace"></span>
+            <button class="btn btn-sm btn-secondary" onclick="regenerateTop15WithConfirm()" title="Force regeneration (requires confirm)">♻️ Regenerate</button>
+          </div>
         </div>
         <div class="card-body" style="padding:12px">
           <div class="top15-grid" id="top15-list">
             <div class="empty-state">
               <span class="empty-icon">🎯</span>
               <h3>No accounts yet</h3>
-              <p>Upload your account CSV to see today's priority targets</p>
+              <p>Upload your account CSV and scan signals to see today's intent-driven targets</p>
             </div>
           </div>
         </div>
@@ -686,15 +705,23 @@ tr.selected td{background:rgba(0,212,170,0.05)}
     <div>
       <div class="card" style="flex:1;display:flex;flex-direction:column">
         <div class="card-header">
-          <div class="card-title">📡 Latest Intent Signals</div>
-          <button class="btn btn-sm btn-secondary" onclick="showPanel('signals')">View All</button>
+          <div>
+            <div class="card-title">💰 Brand Talent Investment Signals</div>
+            <div id="market-subtitle" style="font-size:11px;color:var(--muted);margin-top:2px">Scanning brand spend in talent ecosystems</div>
+          </div>
+          <div style="display:flex;gap:6px;align-items:center">
+            <label style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--muted2);cursor:pointer" title="Only show brands not in your accounts">
+              <input type="checkbox" id="market-filter-new" onchange="renderMarketFeed()" style="width:12px;height:12px"> New only
+            </label>
+            <button class="btn btn-sm btn-secondary" onclick="refreshMarketFeed(true)">↻ Refresh</button>
+          </div>
         </div>
         <div class="card-body" style="padding:8px 16px;flex:1;overflow-y:auto">
-          <div id="dash-signals">
+          <div id="dash-market-signals">
             <div class="empty-state" style="padding:30px">
-              <span class="empty-icon" style="font-size:32px">📡</span>
-              <h3>No signals yet</h3>
-              <p>Scan your accounts to surface intent signals</p>
+              <span class="empty-icon" style="font-size:32px">🌐</span>
+              <h3>Loading market signals...</h3>
+              <p>Scanning NIL market for brand activity</p>
             </div>
           </div>
         </div>
@@ -715,11 +742,11 @@ tr.selected td{background:rgba(0,212,170,0.05)}
   <!-- Follow-up Queue -->
   <div style="margin-bottom:24px">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-      <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;display:flex;align-items:center;gap:8px">
+      <div style="font-family:'Outfit',sans-serif;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;display:flex;align-items:center;gap:8px">
         <span>🔥</span> Follow-Up Queue
         <span id="queue-stale-count" style="font-size:11px;font-weight:400;color:var(--muted)"></span>
       </div>
-      <button onclick="renderFollowUpQueue()" style="background:none;border:1px solid var(--border);color:var(--muted);font-size:10px;font-weight:700;cursor:pointer;padding:4px 10px;border-radius:var(--radius);font-family:'DM Mono',monospace">↻ REFRESH</button>
+      <button onclick="renderFollowUpQueue()" style="background:none;border:1px solid var(--border);color:var(--muted);font-size:10px;font-weight:700;cursor:pointer;padding:4px 10px;border-radius:var(--radius);font-family:'JetBrains Mono',monospace">↻ REFRESH</button>
     </div>
     <div id="follow-up-queue">
       <div style="text-align:center;padding:20px;color:var(--muted);font-size:12px">Loading queue...</div>
@@ -746,7 +773,7 @@ tr.selected td{background:rgba(0,212,170,0.05)}
   </div>
 
   <div class="filter-bar">
-    <span style="font-size:12px;color:var(--muted);font-family:'DM Mono',monospace">FILTER:</span>
+    <span style="font-size:12px;color:var(--muted);font-family:'JetBrains Mono',monospace">FILTER:</span>
     <div class="filter-chip active" onclick="filterAccounts('all',this)">All <span style="font-size:10px;opacity:0.6">(241)</span></div>
     <div class="filter-chip" onclick="filterAccounts('brand_draft',this)">📋 Brand Draft <span style="font-size:10px;opacity:0.6">(40)</span></div>
     <div class="filter-chip" onclick="filterAccounts('prospecting',this)">🔍 Prospecting <span style="font-size:10px;opacity:0.6">(201)</span></div>
@@ -989,7 +1016,7 @@ tr.selected td{background:rgba(0,212,170,0.05)}
 
 <!-- ══════════════════ SETTINGS ══════════════════ -->
 <div id="panel-settings" class="panel">
-  <div class="page-header"><h1>Settings</h1><div class="sub">Configure your OD Sales Hub</div></div>
+  <div class="page-header"><h1>Settings</h1><div class="sub">Configure your OBOS workspace</div></div>
 
   <div style="max-width:640px">
     <div class="settings-section">
@@ -1025,7 +1052,7 @@ tr.selected td{background:rgba(0,212,170,0.05)}
         <input class="form-input" id="apollo-test-domain" placeholder="e.g. aloyoga.com or spotify.com" style="flex:1">
         <button class="btn btn-secondary" onclick="runApolloDiagnostic()">🔍 Test</button>
       </div>
-      <div id="apollo-diagnostic-output" style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:12px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text2);max-height:400px;overflow-y:auto;white-space:pre-wrap;display:none"></div>
+      <div id="apollo-diagnostic-output" style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:12px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);max-height:400px;overflow-y:auto;white-space:pre-wrap;display:none"></div>
     </div>
 
     <div class="settings-section">
@@ -1092,7 +1119,7 @@ tr.selected td{background:rgba(0,212,170,0.05)}
 <div class="drawer" id="account-drawer">
   <div class="drawer-header">
     <div>
-      <div id="drawer-company" style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;margin-bottom:2px"></div>
+      <div id="drawer-company" style="font-family:'Outfit',sans-serif;font-weight:800;font-size:18px;margin-bottom:2px"></div>
       <div id="drawer-meta" style="font-size:12px;color:var(--muted2)"></div>
     </div>
     <div style="display:flex;gap:8px;align-items:center">
@@ -1199,6 +1226,9 @@ tr.selected td{background:rgba(0,212,170,0.05)}
 <div class="toast-container" id="toast-container"></div>
 
 <script>
+
+// Global HTML escape function
+function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
 // ══ RYAN WOLPE — REAL ACCOUNT DATA FROM CSV ══
 // VERSION — bump this to force localStorage clear after bad builds
@@ -1499,7 +1529,7 @@ const STATUS_CONFIG = {
   contacted:      {label:'Contacted',       badge:'badge-blue',    dot:'dot-blue',   kanban:'📬', color:'#4a9eff', desc:'Cold email or LinkedIn sent'},
   follow_up:      {label:'Nurturing',       badge:'badge-gold',    dot:'dot-gold',   kanban:'🔁', color:'#c8a84b', desc:'Multi-touch sequence active'},
   engaged:        {label:'Engaged',         badge:'badge-purple',  dot:'dot-purple', kanban:'💬', color:'#9b59b6', desc:'Replied or showed interest'},
-  meeting:        {label:'Meeting Booked',  badge:'badge-teal',    dot:'dot-teal',   kanban:'📅', color:'#00d4aa', desc:'Discovery call scheduled'},
+  meeting:        {label:'Meeting Booked',  badge:'badge-teal',    dot:'dot-teal',   kanban:'📅', color:'#10b981', desc:'Discovery call scheduled'},
   proposal:       {label:'Proposal Sent',   badge:'badge-orange',  dot:'dot-orange', kanban:'📄', color:'#e67e22', desc:'Deck or proposal delivered'},
   negotiation:    {label:'Negotiating',     badge:'badge-red',     dot:'dot-red',    kanban:'🤝', color:'#e74c3c', desc:'Terms and pricing discussion'},
   closed:         {label:'Closed Won',      badge:'badge-accent',  dot:'dot-green',  kanban:'✅', color:'#2ecc71', desc:'Deal signed'}
@@ -1649,7 +1679,7 @@ function renderAccountsTable() {
     const lastTouch = a.lastTouch ? new Date(a.lastTouch).toLocaleDateString('en-US',{month:'short',day:'numeric'}) : '—';
     return `<tr onclick="openDrawer('${a.id}')" style="cursor:pointer">
       <td>${priorityRing(a.priority)}</td>
-      <td><div style="font-weight:600;font-size:13px">${a.company}</div><div style="font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;display:flex;gap:5px;align-items:center;margin-top:2px">${a.bucket==='brand_draft'?'<span style=\"background:rgba(240,180,41,0.15);color:var(--gold);border-radius:3px;padding:1px 5px;font-size:9px;font-weight:700\">BRAND DRAFT</span>':'<span style=\"background:rgba(255,255,255,0.06);color:var(--muted);border-radius:3px;padding:1px 5px;font-size:9px\">PROSPECTING</span>'}${a.website?'<span>'+a.website+'</span>':''}</div></td>
+      <td><div style="font-weight:600;font-size:13px">${a.company}</div><div style="font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;display:flex;gap:5px;align-items:center;margin-top:2px">${a.bucket==='brand_draft'?'<span style=\"background:rgba(240,180,41,0.15);color:var(--gold);border-radius:3px;padding:1px 5px;font-size:9px;font-weight:700\">BRAND DRAFT</span>':'<span style=\"background:rgba(255,255,255,0.06);color:var(--muted);border-radius:3px;padding:1px 5px;font-size:9px\">PROSPECTING</span>'}${a.website?'<span>'+a.website+'</span>':''}</div></td>
       <td><span class="tag">${a.vertical||'—'}</span></td>
       <td><span style="font-size:12px;color:var(--muted2)">${a.territory||'—'}</span></td>
       <td>${renderNILScore(score)}</td>
@@ -1725,7 +1755,7 @@ const ACTIVITY_CONFIG = {
   call:         { icon:'📞', label:'Called',        color:'#2ecc71', badge:'badge-green'  },
   voicemail:    { icon:'📬', label:'Voicemail',     color:'#9b59b6', badge:'badge-purple' },
   linkedin:     { icon:'💼', label:'LinkedIn DM',   color:'#0077b5', badge:'badge-blue'   },
-  meeting:      { icon:'📅', label:'Meeting',       color:'#00d4aa', badge:'badge-teal'   },
+  meeting:      { icon:'📅', label:'Meeting',       color:'#10b981', badge:'badge-teal'   },
   note:         { icon:'📝', label:'Note',          color:'#c8a84b', badge:'badge-gold'   },
   stage_change: { icon:'🔄', label:'Stage Change',  color:'#888',    badge:'badge-muted'  },
 };
@@ -1835,7 +1865,7 @@ function showFollowUpScheduler(accountId, activityEntry) {
     return d.toLocaleDateString('en-US', {month:'short', day:'numeric'});
   };
   formEl.innerHTML = `
-    <div style="background:rgba(0,212,170,0.06);border:1px solid rgba(0,212,170,0.2);border-radius:var(--radius);padding:10px 12px">
+    <div style="background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.2);border-radius:var(--radius);padding:10px 12px">
       <div style="font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">📅 Schedule Follow-up</div>
       <div style="display:flex;gap:6px;flex-wrap:wrap">
         <button onclick="scheduleFollowUp('${accountId}',${activityEntry.id},3)" style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:6px 14px;font-size:11px;font-weight:700;color:var(--text1);cursor:pointer">3d <span style="font-size:9px;color:var(--muted)">${dueLabel(3)}</span></button>
@@ -2005,7 +2035,7 @@ function renderActivityTimeline(log) {
 
         // Tab badge (email type / linkedin DM / call prep etc)
         const tabBadge = m.tabLabel && m.tabLabel !== cfg.label
-          ? `<span style="background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:1px 6px;font-size:9px;font-weight:700;color:var(--muted2);font-family:'DM Mono',monospace">${m.tabLabel}</span>`
+          ? `<span style="background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:1px 6px;font-size:9px;font-weight:700;color:var(--muted2);font-family:'JetBrains Mono',monospace">${m.tabLabel}</span>`
           : '';
 
         // Subject line
@@ -2034,7 +2064,7 @@ function renderActivityTimeline(log) {
                   <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:3px">
                     <span style="font-size:11px;font-weight:800;color:${cfg.color};text-transform:uppercase;letter-spacing:0.04em">${cfg.label}</span>
                     ${tabBadge}
-                    <span style="font-size:10px;color:var(--muted);font-family:'DM Mono',monospace;margin-left:auto">${time}</span>
+                    <span style="font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-left:auto">${time}</span>
                   </div>
                   ${contactPill ? '<div style="margin-bottom:4px">'+contactPill+'</div>' : ''}
                   <div style="font-size:12.5px;font-weight:600;color:var(--text1)">${entry.content || '—'}</div>
@@ -2147,7 +2177,7 @@ function renderFollowUpQueue(filterOverride) {
             ${notes ? `<div style="font-size:10px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:400px">${notes.substring(0,80)}${notes.length>80?'…':''}</div>` : ''}
           </div>
           <div style="display:flex;align-items:center;gap:6px;flex-shrink:0" onclick="event.stopPropagation()">
-            <div style="font-size:14px;font-weight:800;color:${score>=75?'#2ecc71':score>=50?'#c8a84b':'#666'};font-family:'DM Mono',monospace">${score}</div>
+            <div style="font-size:14px;font-weight:800;color:${score>=75?'#2ecc71':score>=50?'#c8a84b':'#666'};font-family:'JetBrains Mono',monospace">${score}</div>
             <button onclick="completeFollowUp('${fu.id}')" style="background:#2ecc71;color:#fff;border:none;border-radius:4px;padding:4px 8px;font-size:9px;font-weight:700;cursor:pointer" title="Mark done">✓</button>
             <button onclick="snoozeFollowUp('${fu.id}',1)" style="background:var(--surface2);color:var(--muted2);border:1px solid var(--border);border-radius:4px;padding:4px 6px;font-size:9px;font-weight:700;cursor:pointer" title="Snooze 1d">+1d</button>
             <button onclick="snoozeFollowUp('${fu.id}',3)" style="background:var(--surface2);color:var(--muted2);border:1px solid var(--border);border-radius:4px;padding:4px 6px;font-size:9px;font-weight:700;cursor:pointer" title="Snooze 3d">+3d</button>
@@ -2213,7 +2243,7 @@ function renderStalenessQueue(container) {
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
-        <div style="font-size:14px;font-weight:800;color:${score>=75?'#2ecc71':score>=50?'#c8a84b':'#666'};font-family:'DM Mono',monospace">${score}</div>
+        <div style="font-size:14px;font-weight:800;color:${score>=75?'#2ecc71':score>=50?'#c8a84b':'#666'};font-family:'JetBrains Mono',monospace">${score}</div>
         <button onclick="event.stopPropagation();quickLogFromQueue('${account.id}')" style="background:var(--accent);color:#000;border:none;border-radius:var(--radius);padding:5px 10px;font-size:10px;font-weight:800;cursor:pointer">LOG →</button>
       </div>
     </div>`;
@@ -2257,7 +2287,7 @@ function drawerTab(tab, el) {
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px">
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px">
           <div class="form-label">NIL FIT SCORE</div>
-          <div style="font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:${getNILColor(score)}">${score}</div>
+          <div style="font-family:'Outfit',sans-serif;font-size:36px;font-weight:800;color:${getNILColor(score)}">${score}</div>
           <div style="font-size:11px;color:var(--muted)">out of 99</div>
         </div>
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px">
@@ -2326,11 +2356,11 @@ function drawerTab(tab, el) {
           <span style="font-size:10px;font-weight:800;color:${urgencyColor};letter-spacing:0.08em">${urgencyLabel}</span>
           <span style="font-size:12px;color:var(--muted2);margin-left:8px">${daysSince===999?'Never contacted':daysSince===0?'Touched today':daysSince+' days since last touch'}</span>
         </div>
-        <div style="font-size:10px;color:var(--muted);font-family:'DM Mono',monospace">Follow-up window: ${threshold}d</div>
+        <div style="font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace">Follow-up window: ${threshold}d</div>
       </div>
 
       <!-- Account follow-ups — always visible with add option -->
-      <div style="background:rgba(0,212,170,0.04);border:1px solid rgba(0,212,170,0.15);border-radius:var(--radius);padding:10px 12px;margin-bottom:14px">
+      <div style="background:rgba(16,185,129,0.04);border:1px solid rgba(16,185,129,0.15);border-radius:var(--radius);padding:10px 12px;margin-bottom:14px">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
           <div style="font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em">📅 Follow-ups</div>
           <button onclick="document.getElementById('fu-add-${account.id}').style.display=document.getElementById('fu-add-${account.id}').style.display==='none'?'block':'none'" style="background:var(--accent);color:#000;border:none;border-radius:4px;padding:3px 10px;font-size:9px;font-weight:800;cursor:pointer">+ Schedule</button>
@@ -2527,6 +2557,19 @@ function composerFromTop15(accountId) {
   }
 }
 
+// Open Discovery and pre-fill brand from market feed signal
+function openMarketComposer(brandName, headline) {
+  showPanel('discovery');
+  setTimeout(() => {
+    const input = document.getElementById('discovery-brand');
+    if (input) {
+      input.value = brandName;
+      // Auto-trigger the score
+      scoreBrand();
+    }
+  }, 150);
+}
+
 // ══════════════════════════════════════════════════════
 // KANBAN
 // ══════════════════════════════════════════════════════
@@ -2548,12 +2591,12 @@ function renderKanban() {
         onclick="openDrawer('${a.id}')">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:6px;margin-bottom:6px">
           <div style="font-size:12px;font-weight:700;color:var(--text1);line-height:1.3;flex:1">${a.company}</div>
-          <div style="font-size:13px;font-weight:800;color:${scoreColor};font-family:'DM Mono',monospace;flex-shrink:0">${score}</div>
+          <div style="font-size:13px;font-weight:800;color:${scoreColor};font-family:'JetBrains Mono',monospace;flex-shrink:0">${score}</div>
         </div>
         <div style="font-size:10px;color:var(--muted2);margin-bottom:6px">${a.vertical||'—'}</div>
         <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap">
           <span class="badge ${STATUS_CONFIG[a.priority]?.badge||'badge-muted'}" style="font-size:9px;padding:1px 5px">${a.priority||'medium'}</span>
-          ${a.lastTouch ? `<span style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace">${daysSince(a.lastTouch)}d ago</span>` : ''}
+          ${a.lastTouch ? `<span style="font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace">${daysSince(a.lastTouch)}d ago</span>` : ''}
         </div>
         ${a.notes ? `<div style="font-size:10px;color:var(--muted);margin-top:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%">${a.notes.substring(0,45)}${a.notes.length>45?'…':''}</div>` : ''}
       </div>`;
@@ -3372,7 +3415,7 @@ function renderSignalItem(s) {
   const color = strength>=70?'var(--green)':strength>=50?'var(--accent)':strength>=35?'var(--gold)':'var(--muted)';
   const label = strength>=70?'High relevance':strength>=50?'Good relevance':strength>=35?'Moderate':'Low';
   const nilBadge = (s.tags && (s.tags.includes('NIL') || s.tags.includes('Sports') || s.tags.includes('Campus') || s.tags.includes('Creator')))
-    ? `<span style="background:rgba(0,212,170,0.15);color:var(--accent);font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:4px">NIL-adjacent</span>` : '';
+    ? `<span style="background:rgba(16,185,129,0.15);color:var(--accent);font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:4px">NIL-adjacent</span>` : '';
   const tagHtml = (s.tags && s.tags.length > 0)
     ? s.tags.slice(0,4).map(t => `<span style="background:var(--surface2);color:var(--muted2);font-size:9px;padding:1px 5px;border-radius:3px">${t}</span>`).join('')
     : '';
@@ -3461,8 +3504,8 @@ function updateDashboard() {
   const oldNil = document.getElementById('stat-nil');
   if (oldNil) oldNil.textContent = avgNIL||'—';
 
-  // Top 15 — use stable daily targets (regenerate only every 24h or on manual refresh)
-  loadAndRenderDailyTargets();
+  // Top 15 — use intent-driven scoring from signals
+  loadAndRenderIntentTop15();
 
   // Pipeline summary — horizontal card layout
   const stages = Object.entries(STATUS_CONFIG);
@@ -3471,13 +3514,13 @@ function updateDashboard() {
     const isActive = count > 0;
     return `<div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;text-align:center;opacity:${isActive ? 1 : 0.5}">
       <div style="font-size:20px;margin-bottom:4px">${v.kanban}</div>
-      <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:${isActive ? 'var(--text1)' : 'var(--muted)'}">${count}</div>
+      <div style="font-family:'Outfit',sans-serif;font-size:22px;font-weight:800;color:${isActive ? 'var(--text1)' : 'var(--muted)'}">${count}</div>
       <div style="font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;margin-top:2px">${v.label}</div>
     </div>`;
   }).join('');
 
-  // Recent signals on dashboard — always re-derive from canonical STATE.signals
-  renderDashboardSignals();
+  // Market feed — broader NIL market discovery
+  refreshMarketFeed();
   setTimeout(renderFollowUpQueue, 0);
 }
 
@@ -3511,6 +3554,635 @@ function renderDashboardSignals() {
   } else {
     dashSig.innerHTML = top.map(s => renderSignalItem(s)).join('');
   }
+}
+
+// ══════════════════════════════════════════════════════
+// INTENT-DRIVEN TOP 15 ENGINE v2
+// Scores accounts by signal activity, not just NIL score
+// ══════════════════════════════════════════════════════
+const INTENT_TOP15_KEY = 'obos_intentTop15_v2';
+const INTENT_TOP15_VERSION = 'v2.1';
+const INTENT_TOP15_TTL = 24 * 60 * 60 * 1000;
+
+const INTENT_KEYWORDS = {
+  'sponsorship': 20, 'partnership': 18, 'athlete': 15, 'nil': 20, 'ambassador': 18,
+  'creator': 15, 'collegiate': 18, 'college athlete': 20, 'campus': 15, 'activation': 15,
+  'deal': 12, 'launch': 10, 'campaign': 12, 'endorsement': 18, 'brand partner': 16,
+  'influencer': 14, 'ncaa': 18, 'student athlete': 20, 'name image likeness': 20,
+  'gen z': 10, 'social media': 8, 'tiktok': 10, 'content creator': 14, 'collab': 12
+};
+
+function computeIntentScore(accountId) {
+  const now = Date.now();
+  const sevenDaysAgo = now - (7 * 24 * 60 * 60 * 1000);
+  const signals = STATE.signals.filter(s => s.accountId === accountId && new Date(s.date).getTime() > sevenDaysAgo);
+  if (signals.length === 0) return { score: 0, signals: 0, topSignals: [], recencyLabel: 'none', topReason: '' };
+
+  let score = 0;
+  const signalDetails = [];
+
+  signals.forEach(s => {
+    const ageMs = now - new Date(s.date).getTime();
+    const ageHrs = ageMs / (1000 * 60 * 60);
+    let pts = 10;
+    if (ageHrs <= 24) pts *= 2.5;
+    else if (ageHrs <= 72) pts *= 1.8;
+    else pts *= 1.2;
+    const text = ((s.title || '') + ' ' + (s.summary || '')).toLowerCase();
+    let kwBoost = 0;
+    for (const [kw, boost] of Object.entries(INTENT_KEYWORDS)) {
+      if (text.includes(kw)) kwBoost = Math.max(kwBoost, boost);
+    }
+    pts += kwBoost;
+    score += pts;
+    signalDetails.push({ ...s, intentPts: pts, ageHrs: Math.round(ageHrs) });
+  });
+
+  if (signals.length >= 5) score += 30;
+  else if (signals.length >= 3) score += 15;
+
+  signalDetails.sort((a, b) => b.intentPts - a.intentPts);
+  const mostRecent = signalDetails.reduce((best, s) => (!best || s.ageHrs < best.ageHrs) ? s : best, null);
+  const recencyLabel = mostRecent ? (mostRecent.ageHrs < 24 ? 'Today' : mostRecent.ageHrs < 48 ? 'Yesterday' : mostRecent.ageHrs < 72 ? '2-3d ago' : `${Math.round(mostRecent.ageHrs / 24)}d ago`) : 'none';
+  const topReason = signalDetails[0] ? signalDetails[0].title : '';
+
+  return { score: Math.round(score), signals: signals.length, topSignals: signalDetails.slice(0, 3), recencyLabel, topReason, mostRecentHrs: mostRecent ? mostRecent.ageHrs : Infinity };
+}
+
+function generateIntentTop15() {
+  const results = [];
+  const accountSet = new Set();
+  STATE.accounts.forEach(a => {
+    const intent = computeIntentScore(a.id);
+    if (intent.score > 0) {
+      results.push({
+        accountId: a.id, accountName: a.company, vertical: a.vertical,
+        status: a.status, priority: a.priority,
+        intentScore: intent.score, signalCount: intent.signals,
+        topSignals: intent.topSignals.map(s => ({ title: s.title, link: s.link, source: s.source, date: s.date, ageHrs: s.ageHrs })),
+        recencyLabel: intent.recencyLabel, topReason: intent.topReason,
+        mostRecentHrs: intent.mostRecentHrs, isFallback: false
+      });
+      accountSet.add(a.id);
+    }
+  });
+  results.sort((a, b) => b.intentScore - a.intentScore);
+  let top15 = results.slice(0, 15);
+  if (top15.length < 15) {
+    const remaining = STATE.accounts.filter(a => !accountSet.has(a.id))
+      .map(a => ({ accountId: a.id, accountName: a.company, vertical: a.vertical, status: a.status, priority: a.priority, intentScore: 0, signalCount: 0, topSignals: [], recencyLabel: 'none', topReason: '', mostRecentHrs: Infinity, isFallback: true, nilScore: computeNILScore(a) }))
+      .sort((a, b) => b.nilScore - a.nilScore);
+    top15 = [...top15, ...remaining.slice(0, 15 - top15.length)];
+  }
+  return { version: INTENT_TOP15_VERSION, generatedAt: Date.now(), targets: top15, signalMatchHelper: top15.filter(t => !t.isFallback).length < 5 };
+}
+
+function loadIntentTop15Cache() {
+  try {
+    const raw = localStorage.getItem(INTENT_TOP15_KEY);
+    if (!raw) return null;
+    const data = JSON.parse(raw);
+    if (data.version !== INTENT_TOP15_VERSION) return null;
+    if (Date.now() - data.generatedAt > INTENT_TOP15_TTL) return null;
+    return data;
+  } catch { return null; }
+}
+
+function saveIntentTop15Cache(data) {
+  try { localStorage.setItem(INTENT_TOP15_KEY, JSON.stringify(data)); } catch {}
+}
+
+function renderIntentTop15(data) {
+  const list = document.getElementById('top15-list');
+  const subtitle = document.getElementById('top15-subtitle');
+  const tsEl = document.getElementById('top15-generated-at');
+  if (!list) return;
+
+  if (!data || !data.targets || data.targets.length === 0) {
+    list.innerHTML = '<div class="empty-state"><span class="empty-icon">🎯</span><h3>No intent signals found</h3><p>Scan your accounts to surface intent-driven targets</p></div>';
+    if (subtitle) subtitle.textContent = 'No signal data yet';
+    return;
+  }
+
+  const signalDriven = data.targets.filter(t => !t.isFallback).length;
+  const fallbackCount = data.targets.filter(t => t.isFallback).length;
+  if (subtitle) subtitle.textContent = `${signalDriven} intent-driven` + (fallbackCount > 0 ? ` · ${fallbackCount} fallback` : '') + ' · stable for 24h';
+  if (tsEl && data.generatedAt) {
+    const age = Math.round((Date.now() - data.generatedAt) / (1000 * 60 * 60));
+    tsEl.textContent = age < 1 ? 'Just now' : `${age}h ago`;
+  }
+
+  window._top15SignalTitles = new Set();
+  data.targets.forEach(t => (t.topSignals||[]).forEach(s => window._top15SignalTitles.add((s.title||'').toLowerCase().trim())));
+
+  list.innerHTML = data.targets.map((t, i) => {
+    const account = STATE.accounts.find(a => a.id === t.accountId);
+    if (!account) return '';
+    const borderColor = t.isFallback ? 'var(--muted)' : (t.intentScore >= 80 ? 'var(--accent)' : t.intentScore >= 40 ? 'var(--gold)' : 'var(--accent2)');
+    const scoreColor = t.isFallback ? 'var(--muted2)' : (t.intentScore >= 80 ? 'var(--accent)' : t.intentScore >= 40 ? 'var(--gold)' : 'var(--accent2)');
+
+    const headlines = (t.topSignals || []).slice(0, 3).map(s => {
+      const ageLabel = s.ageHrs < 24 ? 'today' : s.ageHrs < 48 ? 'yesterday' : `${Math.round(s.ageHrs/24)}d ago`;
+      return `<a href="${s.link||'#'}" target="_blank" style="display:block;font-size:10.5px;color:var(--muted2);text-decoration:none;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:380px" title="${esc(s.title)}">↗ ${esc((s.title||'').substring(0,70))} <span style="color:var(--muted)">(${s.source||'News'}, ${ageLabel})</span></a>`;
+    }).join('');
+
+    const fallbackBadge = t.isFallback ? '<span style="font-size:9px;background:rgba(108,117,125,0.15);color:var(--muted2);padding:1px 6px;border-radius:3px;margin-left:4px">Fallback</span>' : '';
+    const intentBadge = !t.isFallback ? '<span style="font-size:9px;background:rgba(16,185,129,0.15);color:var(--accent);padding:1px 6px;border-radius:3px;margin-left:4px">Intent driven</span>' : '';
+
+    return `
+    <div class="top15-item" onclick="openDrawer('${t.accountId}')" style="border-left:3px solid ${borderColor}">
+      <div class="top15-rank ${i < 3 ? 'top3' : ''}">${i + 1}</div>
+      ${priorityRing(account.priority)}
+      <div class="top15-info">
+        <div class="top15-name">${esc(t.accountName)}${intentBadge}${fallbackBadge}</div>
+        <div class="top15-signals">
+          <span class="badge badge-muted" style="font-size:10px">${t.vertical || 'Other'}</span>
+          ${t.signalCount > 0 ? `<span class="badge badge-accent" style="font-size:10px">⚡ ${t.signalCount} signal${t.signalCount>1?'s':''}</span>` : ''}
+          ${t.recencyLabel !== 'none' ? `<span class="badge" style="font-size:9px;background:rgba(59,130,246,0.12);color:var(--accent2);border:1px solid rgba(59,130,246,0.25)">🕐 ${t.recencyLabel}</span>` : ''}
+          ${statusBadge(account.status)}
+        </div>
+        ${t.topReason && !t.isFallback ? `<div style="font-size:11.5px;color:var(--text);margin-top:4px;line-height:1.4">${esc(t.topReason.substring(0,90))}</div>` : ''}
+        ${t.isFallback ? '<div style="font-size:11px;color:var(--muted);margin-top:3px">High-fit account — scan to surface live triggers</div>' : ''}
+        ${headlines ? `<div style="margin-top:3px">${headlines}</div>` : ''}
+      </div>
+      <div style="text-align:right;flex-shrink:0">
+        <div style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:800;color:${scoreColor}">${t.isFallback ? (t.nilScore||computeNILScore(account)) : t.intentScore}</div>
+        <div style="font-size:10px;color:var(--muted)">${t.isFallback ? 'NIL score' : 'intent'}</div>
+      </div>
+      <div class="top15-actions">
+        <button class="btn btn-xs btn-primary" onclick="event.stopPropagation();composerFromTop15('${t.accountId}')" title="Draft signal-led outreach">✍️</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  if (data.signalMatchHelper) {
+    list.insertAdjacentHTML('beforeend', '<div style="font-size:11px;color:var(--muted);text-align:center;padding:12px;border-top:1px solid var(--border)">💡 Adding website domains to account records improves signal matching</div>');
+  }
+}
+
+function loadAndRenderIntentTop15(forceRefresh) {
+  if (!forceRefresh) {
+    const cached = loadIntentTop15Cache();
+    if (cached) { renderIntentTop15(cached); return; }
+  }
+  const data = generateIntentTop15();
+  saveIntentTop15Cache(data);
+  renderIntentTop15(data);
+}
+
+function regenerateTop15WithConfirm() {
+  if (!confirm('Regenerate Top 15 targets? This will recompute intent scores from current signals.')) return;
+  localStorage.removeItem(INTENT_TOP15_KEY);
+  loadAndRenderIntentTop15(true);
+  toast('Top 15 regenerated from latest signals', 'success');
+}
+
+// ══════════════════════════════════════════════════════
+// BROADER NIL MARKET INTENT FEED
+// ══════════════════════════════════════════════════════
+const MARKET_CACHE_KEY = 'obos_marketSignals_v5';
+const MARKET_CACHE_TS_KEY = 'obos_marketSignals_cachedAt';
+const MARKET_CACHE_TTL = 10 * 60 * 1000;
+
+const MARKET_QUERIES = [
+  // Brand + influencer/creator spend
+  '"influencer campaign" brand launch',
+  '"creator partnership" brand deal',
+  '"ambassador program" brand launch',
+  '"brand partnership" influencer creator',
+  '"paid partnership" brand campaign',
+  '"UGC campaign" brand',
+  // Brand + athlete/sports investment  
+  '"athlete endorsement" brand deal',
+  '"sponsorship deal" brand sports',
+  '"NIL deal" brand partnership',
+  '"sports marketing" brand investment',
+  '"athlete partnership" brand campaign',
+  '"brand ambassador" athlete sports',
+  // Specific deal/spend language
+  'brand signs athlete endorsement deal',
+  'brand launches influencer program',
+  'brand creator marketing partnership deal',
+  'brand sports sponsorship announcement',
+  'brand talent campaign activation',
+  'brand influencer spend marketing budget'
+];
+
+// ── BRAND INVESTMENT INTENT CLASSIFIER ──
+// Classifies each signal into a specific investment category
+const INTENT_TAG_RULES = [
+  { tag: 'Influencer Expansion', icon: '📱', color: 'var(--accent4)', keywords: /influencer.*(campaign|program|expansion|strategy|network|spend|budget|initiative|launch)|brand.*influencer.*(deal|partner)/i },
+  { tag: 'Creator Program Launch', icon: '🎬', color: 'var(--accent)', keywords: /creator.*(program|partnership|network|platform|studio|fund|accelerator|launch)|launch.*creator|creator.*collab/i },
+  { tag: 'NIL Activation', icon: '🏆', color: 'var(--gold)', keywords: /\bnil\b.*(deal|partner|activat|program|campaign|sign|launch)|name.?image.?likeness/i },
+  { tag: 'Athlete Partnership', icon: '🤝', color: 'var(--accent2)', keywords: /athlete.*(partner|deal|endorse|sign|ambassador|contract)|sign.*athlete|endorse.*deal.*athlete/i },
+  { tag: 'Brand Ambassador Campaign', icon: '⭐', color: '#e879f9', keywords: /ambassador.*(program|campaign|launch|deal|sign|roster)|brand.*ambassador|global.*ambassador/i },
+  { tag: 'Sponsorship Investment', icon: '💰', color: 'var(--green)', keywords: /sponsor.*(deal|invest|agreement|partner|renew|extend|multi|million)|sponsorship.*(announce|launch|sign)/i },
+  { tag: 'Sports Marketing Deal', icon: '🏟️', color: 'var(--accent3)', keywords: /sports?.*(marketing|deal|partner|sponsor|campaign|activation)|marketing.*sports|arena.*naming|stadium.*deal/i },
+  { tag: 'Talent Acquisition Move', icon: '🎯', color: 'var(--red)', keywords: /(hire|appoint|recruit).*(influencer|creator|talent|marketing|brand|partnership)|head of.*(influencer|creator|talent|partnership)/i },
+  { tag: 'Paid Media + Creator', icon: '📊', color: '#818cf8', keywords: /(paid|media|ad).*(creator|influencer|spend|budget|campaign)|creator.*media.*buy|influencer.*ad.*spend/i },
+  { tag: 'Performance Creator Campaign', icon: '🚀', color: '#f472b6', keywords: /performance.*(creator|influencer|marketing)|affiliate.*(creator|influencer)|creator.*performance/i },
+];
+
+function classifyMarketIntent(title, desc) {
+  const text = ((title || '') + ' ' + (desc || '')).toLowerCase();
+  for (const rule of INTENT_TAG_RULES) {
+    if (rule.keywords.test(text)) {
+      return { tag: rule.tag, icon: rule.icon, color: rule.color };
+    }
+  }
+  // Fallback classification from broader patterns
+  if (/influencer|creator|ugc|content creator/i.test(text)) return { tag: 'Creator Partnership', icon: '🎬', color: 'var(--accent)', fallback: true };
+  if (/athlete|endorse|nil|college/i.test(text)) return { tag: 'Athlete Partnership', icon: '🤝', color: 'var(--accent2)', fallback: true };
+  if (/sponsor|deal|partner/i.test(text)) return { tag: 'Sponsorship Investment', icon: '💰', color: 'var(--green)', fallback: true };
+  if (/ambassador|brand.*campaign/i.test(text)) return { tag: 'Brand Campaign', icon: '📣', color: 'var(--accent3)', fallback: true };
+  return { tag: 'Market Signal', icon: '📡', color: 'var(--muted2)', fallback: true };
+}
+
+// ── BRAND INVESTMENT SCORE ──
+// Higher = more indicative of real brand capital deployment
+function computeInvestmentScore(title, desc) {
+  const text = ((title || '') + ' ' + (desc || '')).toLowerCase();
+  let score = 30; // base
+
+  // Dollar amounts mentioned
+  if (/\$[\d,.]+\s*(million|billion|m|b|k)/i.test(text)) score += 25;
+  else if (/\$[\d,.]+/i.test(text)) score += 15;
+  // Multi-year / long-term
+  if (/multi.?year|long.?term|extend|renew|multi.?deal|\d+.?year/i.test(text)) score += 15;
+  // Multiple athletes/creators
+  if (/multiple|roster|portfolio|several|team of|group of|network of/i.test(text)) score += 10;
+  // Campaign launch language
+  if (/launch|debut|unveil|introduce|kick.?off|roll.?out|announce/i.test(text)) score += 10;
+  // Formal deal language
+  if (/sign|partner|agreement|contract|deal|endorse/i.test(text)) score += 10;
+  // High-intent keywords
+  if (/ambassador program|influencer program|creator program|campaign|activation/i.test(text)) score += 10;
+  // Budget/spend language
+  if (/budget|spend|invest|allocat|commit|fund/i.test(text)) score += 15;
+
+  // Penalties — reduce for non-investment content
+  if (/opinion|editorial|commentary|analysis|what (is|does|are)|explainer|guide to/i.test(text)) score -= 20;
+  if (/ranking|valuation|top \d+|list of|best \d+/i.test(text)) score -= 15;
+  if (/high school|middle school|youth|prep/i.test(text)) score -= 20;
+  if (/lawsuit|legal|regulation|policy|legislation|bill|law/i.test(text)) score -= 15;
+  if (/speculation|might|could|may|rumor|reportedly considering/i.test(text)) score -= 10;
+
+  // Recency (if date parsing available, handled elsewhere)
+  return Math.max(5, Math.min(99, score));
+}
+
+// ── EXCLUSION FILTER — removes generic/non-investment content ──
+function isExcludedMarketItem(title, desc) {
+  const text = ((title || '') + ' ' + (desc || '')).toLowerCase();
+  // Generic NIL explainers
+  if (/what (is|are|does) nil|nil (explain|101|guide|meaning)|understanding nil|nil for beginners/i.test(text)) return true;
+  // Athlete rankings / valuations without brand
+  if (/top \d+ (nil|college|athlete)|nil valuation|athlete ranking|nil.*ranking/i.test(text) && !/brand|partner|deal|sponsor|campaign|launch/i.test(text)) return true;
+  // High school / youth
+  if (/high school|middle school|youth athlete|prep school/i.test(text) && !/brand|partner|sponsor|deal/i.test(text)) return true;
+  // Legal/policy
+  if (/nil (regulation|legislation|law|policy|bill|ruling|compliance)|congress.*nil|senate.*nil/i.test(text)) return true;
+  // Pure opinion with no brand action
+  if (/^(opinion|editorial|column|commentary|letter to|op.?ed)/i.test(text)) return true;
+  return false;
+}
+
+// ── BRAND EXTRACTION v2 — Company-only, excludes persons/schools ──
+// Exclude patterns for non-brand entities
+const SCHOOL_PATTERNS = /\b(university|college|athletics|athletic|varsity|roster|coach|ncaa|conference|division|d1|d2|d3|recruit|commit|transfer portal|bowl game|march madness|playoff|tournament|classi[cs])\b/i;
+const SCHOOL_NAME_PATTERNS = /^(university of |uc |u of |cal |stanford|harvard|yale|duke|ohio state|michigan|alabama|clemson|florida|texas|georgia|auburn|oregon|usc|ucla|penn state|virginia|tennessee|wisconsin|iowa|notre dame|kentucky|indiana|north carolina|south carolina|lsu|oklahoma|kansas|missouri|mississippi|purdue|syracuse|boston college|wake forest|nc state|maryland|rutgers|arizona|colorado|utah|washington|baylor|tcu|vanderbilt|rice|tulane|smu|villanova|gonzaga|creighton|marquette|georgetown|depaul|seton hall|xavier|dayton|richmond|loyola|lehigh|bucknell|colgate|navy|army|air force)/i;
+const PERSON_NAMES_EXCLUDE = ['steph curry','stephen curry','lebron james','jack hughes','patrick mahomes','travis kelce','jalen hurts','josh allen','lamar jackson','caitlin clark','angel reese','livvy dunne','olivia dunne','bronny james','bryce james','arch manning','caleb williams','jayden daniels','drake maye','shedeur sanders','deion sanders','coach prime','nick saban','kirby smart'];
+const COMPANY_INDICATORS = /\b(inc|llc|co|corp|brand|launches|announces|partners|partnership|deal|program|campaign|sponsor|sponsorship|ambassador|retailer|app|platform|apparel|footwear|beverage|energy drink|supplement|snack|food|restaurant|clothing|sportswear|athletic wear)\b/i;
+
+function isLikelyPerson(name) {
+  if (!name) return false;
+  const n = name.trim();
+  // Check explicit exclusion list
+  if (PERSON_NAMES_EXCLUDE.some(p => n.toLowerCase().includes(p))) return true;
+  // Two-word pattern: "First Last" where both are capitalized single words
+  const words = n.split(/\s+/);
+  if (words.length === 2 && /^[A-Z][a-z]+$/.test(words[0]) && /^[A-Z][a-z]+$/.test(words[1])) {
+    // Check if it could be a brand (two-word brands like "Under Armour", "Red Bull")
+    const lower = n.toLowerCase();
+    // Match against known accounts
+    if (STATE.accounts.some(a => normalizeAccountName(a.company) === normalizeAccountName(n))) return false;
+    // Common two-word brand patterns
+    if (/^(under|red|old|top|home|best|blue|green|white|black|gold|silver|big|wild|true|sweet|cool|hot|fast|bright|clear|fresh|pure|all|one|good|smart|open|high|sun|star|royal|prime|super|mega|ultra|power|pro)\s/i.test(n)) return false;
+    // If no company indicator in broader context, likely a person
+    return true;
+  }
+  // Three-word with Jr/Sr/III
+  if (words.length >= 3 && /^(jr|sr|ii|iii|iv)$/i.test(words[words.length-1])) return true;
+  // Contains comma like "Last, First"
+  if (/^[A-Z][a-z]+,\s*[A-Z][a-z]+$/.test(n)) return true;
+  return false;
+}
+
+function isLikelySchool(name) {
+  if (!name) return false;
+  const n = name.trim().toLowerCase();
+  if (SCHOOL_NAME_PATTERNS.test(n)) return true;
+  if (/\b(university|college|athletics|athletic dept|nil collective|booster|wolverines|wildcats|bulldogs|tigers|bears|eagles|hawks|panthers|mustangs|knights|rebels|volunteers|gators|seminoles|hokies|cavaliers|terrapins|badgers|hawkeyes|jayhawks|sooners|longhorns|aggies|razorbacks|crimson tide|blue devils|tar heels|demon deacons|yellow jackets|fighting irish)\b/i.test(n)) return true;
+  // Ends with common school suffixes
+  if (/\b(state|tech|a&m)\s*$/i.test(n)) return true;
+  return false;
+}
+
+function extractBrandFromSignal(title, desc, existingBrand) {
+  const text = (title || '') + ' ' + (desc || '');
+  const textLower = text.toLowerCase();
+
+  // Priority 1: Check against saved accounts list (most reliable)
+  let accountMatch = null;
+  let accountMatchLen = 0;
+  STATE.accounts.forEach(a => {
+    const name = a.company;
+    const nameLower = name.toLowerCase();
+    if (textLower.includes(nameLower) && name.length > accountMatchLen) {
+      accountMatch = name;
+      accountMatchLen = name.length;
+    }
+    // Also try normalized
+    const variants = typeof getBrandVariants === 'function' ? getBrandVariants(name) : [name];
+    variants.forEach(v => {
+      if (v.length > 2 && textLower.includes(v.toLowerCase()) && v.length > accountMatchLen) {
+        accountMatch = name;
+        accountMatchLen = v.length;
+      }
+    });
+  });
+  if (accountMatch && !isLikelySchool(accountMatch)) {
+    return { brandName: accountMatch, confidence: 'high', reason: 'Matched to saved account' };
+  }
+
+  // Priority 2: Partnership/deal patterns — extract both entities, prefer the company
+  const partnerPatterns = [
+    /(.{2,30}?)(?:\s+(?:partners?|teams?|signs?|joins?|collaborates?|works?))\s+(?:with|alongside)\s+(.{2,30}?)(?:\s|,|\.|\band\b|$)/i,
+    /(.{2,30}?)\s+(?:and|&|,)\s+(.{2,30}?)\s+(?:partner|deal|sponsorship|ambassador|collaboration|campaign|launch|program|activate)/i,
+    /(.{2,30}?)\s+(?:NIL|sponsorship|ambassador|endorsement)\s+(?:deal|agreement|contract|program)\s+(?:with)\s+(.{2,30}?)(?:\s|,|\.|\b|$)/i,
+    /(.{2,30}?)\s+(?:launches?|announces?|unveils?|introduces?)\s+(?:.*?)\s+(?:with|featuring|starring)\s+(.{2,30}?)(?:\s|,|\.|\b|$)/i,
+  ];
+
+  for (const pat of partnerPatterns) {
+    const m = text.match(pat);
+    if (m && m[1] && m[2]) {
+      const e1 = m[1].trim().replace(/^"|"$/g, '').replace(/[,.]$/, '');
+      const e2 = m[2].trim().replace(/^"|"$/g, '').replace(/[,.]$/, '');
+      // Determine which is the brand
+      const e1IsPerson = isLikelyPerson(e1);
+      const e2IsPerson = isLikelyPerson(e2);
+      const e1IsSchool = isLikelySchool(e1);
+      const e2IsSchool = isLikelySchool(e2);
+      const e1HasCompanyWord = COMPANY_INDICATORS.test(e1) || COMPANY_INDICATORS.test(text.substring(0, text.indexOf(e1) + e1.length + 30));
+      const e2HasCompanyWord = COMPANY_INDICATORS.test(e2) || COMPANY_INDICATORS.test(text.substring(Math.max(0, text.indexOf(e2) - 10)));
+
+      if (!e1IsPerson && !e1IsSchool && e1.length > 1) {
+        return { brandName: e1, confidence: 'medium', reason: 'Extracted from partnership pattern' };
+      }
+      if (!e2IsPerson && !e2IsSchool && e2.length > 1) {
+        return { brandName: e2, confidence: 'medium', reason: 'Extracted from partnership pattern' };
+      }
+    }
+  }
+
+  // Priority 3: Strong brand action patterns (brand + verb)
+  const brandActionPatterns = [
+    /^([A-Z][A-Za-z0-9&'.\- ]{1,30}?)(?:\s+(?:signs|launches|announces|partners|expands|hires|opens|activates|ramps|targets|unveils|introduces|debuts|rolls out|kicks off))/,
+    /^([A-Z][A-Za-z0-9&'.\- ]{1,30}?)(?:'s?\s+(?:new|latest|recent|first|major|expanded|growing))/,
+  ];
+
+  const skip = ['the','a','an','new','top','best','how','why','what','when','this','that','big','first','more','other','some','many','each','most','all','report','study','analysis','according','sources','video','david','roger','ryan','teen','watch','exclusive','breaking','update','opinion','editorial'];
+
+  for (const pat of brandActionPatterns) {
+    const m = text.match(pat);
+    if (m && m[1]) {
+      const candidate = m[1].trim().replace(/[,.]$/, '');
+      if (skip.includes(candidate.toLowerCase())) continue;
+      if (isLikelyPerson(candidate)) continue;
+      if (isLikelySchool(candidate)) continue;
+      if (candidate.length < 2 || candidate.length > 30) continue;
+      return { brandName: candidate, confidence: 'medium', reason: 'Brand action pattern' };
+    }
+  }
+
+  // Priority 4: "with X" / "from X" / "by X" patterns
+  const withPatterns = [
+    /(?:with|from|by|at)\s+([A-Z][A-Za-z0-9&'.\- ]{1,25}?)(?:\s+(?:for|in|to|on|and|,|\.|$))/,
+  ];
+  for (const pat of withPatterns) {
+    const m = text.match(pat);
+    if (m && m[1]) {
+      const candidate = m[1].trim().replace(/[,.]$/, '');
+      if (skip.includes(candidate.toLowerCase())) continue;
+      if (isLikelyPerson(candidate)) continue;
+      if (isLikelySchool(candidate)) continue;
+      if (candidate.length >= 2 && candidate.length <= 30) {
+        return { brandName: candidate, confidence: 'low', reason: 'Preposition pattern' };
+      }
+    }
+  }
+
+  // Priority 5: Existing detected brand — validate it
+  if (existingBrand) {
+    if (!isLikelyPerson(existingBrand) && !isLikelySchool(existingBrand)) {
+      return { brandName: existingBrand, confidence: 'low', reason: 'Fallback from existing detection' };
+    }
+  }
+
+  // No valid brand found
+  return null;
+}
+
+// Wrapper for backward compatibility
+function detectBrandFromArticle(title, desc) {
+  const result = extractBrandFromSignal(title, desc, null);
+  return result ? result.brandName : null;
+}
+
+function normalizeAccountName(name) {
+  return (name || '').toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\b(inc|llc|co|corp|ltd|the)\b/g, '').trim().replace(/\s+/g, ' ');
+}
+
+function isAccountInList(brandName) {
+  if (!brandName) return false;
+  const norm = normalizeAccountName(brandName);
+  return STATE.accounts.some(a => {
+    const aNorm = normalizeAccountName(a.company);
+    if (aNorm === norm) return true;
+    const aTokens = aNorm.split(' ').filter(t => t.length > 2);
+    const bTokens = norm.split(' ').filter(t => t.length > 2);
+    if (aTokens.length === 0 || bTokens.length === 0) return false;
+    return aTokens.filter(t => bTokens.includes(t)).length >= Math.min(aTokens.length, bTokens.length, 2);
+  });
+}
+
+function addBrandToAccounts(brandName, signalTitle) {
+  if (!brandName) return;
+  if (isAccountInList(brandName)) { toast(brandName + ' is already in your accounts', 'info'); return; }
+  STATE.accounts.push({
+    id: 'acct_' + Date.now() + '_' + Math.random().toString(36).slice(2,6),
+    company: brandName, vertical: 'Other', bucket: 'brand_draft', status: 'prospecting',
+    priority: 'medium', notes: 'Added from market signal: ' + (signalTitle || '').substring(0, 100),
+    website: '', addedAt: new Date().toISOString()
+  });
+  saveState(); renderAccountsTable(); renderMarketFeed();
+  toast('✅ ' + brandName + ' added to accounts', 'success');
+}
+
+let _marketSignals = [];
+
+async function fetchMarketSignals() {
+  try {
+    const cachedRaw = localStorage.getItem(MARKET_CACHE_KEY);
+    const cachedAt = parseInt(localStorage.getItem(MARKET_CACHE_TS_KEY) || '0');
+    if (cachedRaw && Date.now() - cachedAt < MARKET_CACHE_TTL) {
+      _marketSignals = JSON.parse(cachedRaw);
+      return _marketSignals;
+    }
+  } catch {}
+
+  const allArticles = new Map();
+  const shuffled = [...MARKET_QUERIES].sort(() => Math.random() - 0.5).slice(0, 8);
+
+  for (const query of shuffled) {
+    try {
+      const articles = await fetchGoogleNewsRSS(query);
+      articles.forEach(article => {
+        if (!article.title) return;
+        const cUrl = canonicalizeUrl(article.link) || article.title.toLowerCase().trim();
+        if (allArticles.has(cUrl)) return;
+
+        // Exclude generic/non-investment content
+        if (isExcludedMarketItem(article.title, article.desc)) return;
+
+        // Brand extraction
+        const brandResult = extractBrandFromSignal(article.title, article.desc, null);
+        let brand = brandResult ? brandResult.brandName : null;
+        if (brand && (isLikelySchool(brand) || isLikelyPerson(brand))) brand = null;
+
+        // Intent classification
+        const intentClass = classifyMarketIntent(article.title, article.desc);
+        const investScore = computeInvestmentScore(article.title, article.desc);
+
+        allArticles.set(cUrl, {
+          title: article.title, desc: article.desc, source: article.source,
+          link: article.link, date: article.pubDate, brand: brand,
+          brandConfidence: brandResult ? brandResult.confidence : null,
+          intentTag: intentClass.tag, intentIcon: intentClass.icon, intentColor: intentClass.color,
+          investScore: investScore,
+          inAccounts: brand ? isAccountInList(brand) : false
+        });
+      });
+      await new Promise(r => setTimeout(r, 300));
+    } catch (e) { console.warn('Market fetch error:', e); }
+  }
+
+  _marketSignals = Array.from(allArticles.values());
+  // Sort by investment score desc, then date
+  _marketSignals.sort((a, b) => {
+    if (Math.abs((b.investScore||0) - (a.investScore||0)) > 10) return (b.investScore||0) - (a.investScore||0);
+    const da = new Date(a.date || 0).getTime();
+    const db = new Date(b.date || 0).getTime();
+    return db - da;
+  });
+
+  try {
+    localStorage.setItem(MARKET_CACHE_KEY, JSON.stringify(_marketSignals));
+    localStorage.setItem(MARKET_CACHE_TS_KEY, String(Date.now()));
+  } catch {}
+  return _marketSignals;
+}
+
+async function refreshMarketFeed(force) {
+  const container = document.getElementById('dash-market-signals');
+  if (!container) return;
+  if (force) {
+    localStorage.removeItem(MARKET_CACHE_KEY);
+    localStorage.removeItem(MARKET_CACHE_TS_KEY);
+    container.innerHTML = '<div style="text-align:center;padding:30px;color:var(--muted)"><div class="spinner" style="margin:0 auto 10px"></div>Scanning NIL market...</div>';
+  }
+  await fetchMarketSignals();
+  renderMarketFeed();
+}
+
+function renderMarketFeed() {
+  const container = document.getElementById('dash-market-signals');
+  const subtitleEl = document.getElementById('market-subtitle');
+  if (!container) return;
+
+  const filterNew = document.getElementById('market-filter-new')?.checked || false;
+  let items = [..._marketSignals];
+
+  const seenTitles = new Set();
+  const seenBrandTitle = new Set();
+  items = items.filter(item => {
+    const normTitle = (item.title || '').toLowerCase().replace(/[^a-z0-9\s]/g, '').trim();
+    if (seenTitles.has(normTitle)) return false;
+    seenTitles.add(normTitle);
+    if (item.brand) {
+      const brandTitle = normalizeAccountName(item.brand) + '|' + normTitle.substring(0, 40);
+      if (seenBrandTitle.has(brandTitle)) return false;
+      seenBrandTitle.add(brandTitle);
+    }
+    if (item.brand && (isLikelyPerson(item.brand) || isLikelySchool(item.brand))) return false;
+    return true;
+  });
+
+  if (filterNew) items = items.filter(item => !item.inAccounts);
+
+  if (subtitleEl) {
+    const withBrand = items.filter(i => i.brand).length;
+    const newBrands = items.filter(i => i.brand && !i.inAccounts).length;
+    subtitleEl.textContent = items.length + ' signals · ' + withBrand + ' branded · ' + newBrands + ' new targets';
+  }
+
+  if (items.length === 0) {
+    container.innerHTML = '<div class="empty-state" style="padding:30px"><span class="empty-icon" style="font-size:32px">💰</span><h3>No investment signals yet</h3><p>Click Refresh to scan brand talent spend</p></div>';
+    return;
+  }
+
+  container.innerHTML = items.slice(0, 30).map(item => {
+    const hasBrand = !!item.brand;
+    const brandLabel = item.brand || '';
+    const dateStr = item.date ? new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : 'Recent';
+    const inAccounts = hasBrand ? isAccountInList(item.brand) : false;
+    const inTop15 = window._top15SignalTitles && window._top15SignalTitles.has((item.title || '').toLowerCase().trim());
+
+    // Dynamic intent tag
+    const intentTag = item.intentTag || 'Market Signal';
+    const intentColor = item.intentColor || 'var(--muted2)';
+    const intentIcon = item.intentIcon || '📡';
+    const investScore = item.investScore || 0;
+    const scoreColor = investScore >= 70 ? 'var(--green)' : investScore >= 50 ? 'var(--accent)' : investScore >= 35 ? 'var(--gold)' : 'var(--muted)';
+
+    const addBtn = !hasBrand ? ''
+      : inAccounts
+      ? '<span style="font-size:9px;color:var(--muted);padding:2px 6px;background:var(--card2);border-radius:4px">✓ In accounts</span>'
+      : '<button class="btn" style="font-size:9px;padding:2px 8px;background:rgba(16,185,129,0.12);color:var(--accent);border:1px solid rgba(16,185,129,0.25);border-radius:4px" onclick="event.stopPropagation();addBrandToAccounts(\'' + esc(brandLabel).replace(/'/g, "\\'") + '\',\'' + esc(item.title||'').replace(/'/g, "\\'").substring(0,80) + '\')">+ Add</button>';
+
+    const top15Tag = inTop15 ? '<span style="font-size:8px;background:rgba(59,130,246,0.12);color:var(--accent2);padding:1px 5px;border-radius:3px">In Top 15</span>' : '';
+
+    return '<div style="display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);align-items:flex-start">' +
+      '<div style="width:32px;height:32px;border-radius:8px;background:var(--surface);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">' + intentIcon + '</div>' +
+      '<div style="flex:1;min-width:0">' +
+        '<div style="display:flex;align-items:center;gap:5px;margin-bottom:3px;flex-wrap:wrap">' +
+          (hasBrand ? '<span style="font-size:12px;font-weight:700;color:var(--text)">' + esc(brandLabel) + '</span>' : '') +
+          '<span style="font-size:9px;padding:1px 6px;border-radius:3px;font-weight:600;background:' + intentColor + '18;color:' + intentColor + ';border:1px solid ' + intentColor + '33">' + esc(intentTag) + '</span>' +
+          top15Tag + addBtn +
+        '</div>' +
+        '<div style="font-size:12px;color:var(--muted2);line-height:1.4;margin-bottom:3px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">' + esc(item.title || '') + '</div>' +
+        '<div style="display:flex;align-items:center;gap:8px;font-size:10px;color:var(--muted)">' +
+          '<span>' + (item.source || 'News') + '</span>' +
+          '<span>' + dateStr + '</span>' +
+          '<div style="display:flex;align-items:center;gap:3px"><div style="width:6px;height:6px;border-radius:50%;background:' + scoreColor + '"></div><span style="color:' + scoreColor + ';font-weight:600">' + investScore + '</span></div>' +
+          (item.link ? '<a href="' + item.link + '" target="_blank" style="color:var(--accent);text-decoration:none">↗ View</a>' : '') +
+        '</div>' +
+      '</div>' +
+      '<div style="flex-shrink:0;display:flex;align-items:center">' +
+        (hasBrand ? '<button class="btn btn-xs btn-secondary" style="border:1px solid var(--border2)" onclick="event.stopPropagation();openMarketComposer(\'' + esc(brandLabel).replace(/'/g, "\\'") + '\',\'' + esc(item.title||'').replace(/'/g, "\\'").substring(0,100) + '\')" title="Score this brand in Discovery">🔍</button>' : '') +
+      '</div>' +
+    '</div>';
+  }).join('');
 }
 
 // ══════════════════════════════════════════════════════
@@ -3685,7 +4357,7 @@ function renderTop15List(ranked, aiReason) {
 
     // Tier badge
     const tierBadges = {
-      1: '<span class="badge" style="font-size:9px;background:rgba(0,212,170,0.15);color:var(--accent);border:1px solid rgba(0,212,170,0.3)">🔥 New Event</span>',
+      1: '<span class="badge" style="font-size:9px;background:rgba(16,185,129,0.15);color:var(--accent);border:1px solid rgba(16,185,129,0.3)">🔥 New Event</span>',
       2: '<span class="badge" style="font-size:9px;background:rgba(200,168,75,0.15);color:var(--gold);border:1px solid rgba(200,168,75,0.3)">↻ New Trigger</span>',
       3: '<span class="badge" style="font-size:9px;background:rgba(231,76,60,0.15);color:var(--red);border:1px solid rgba(231,76,60,0.3)">📈 Surge</span>',
       4: '<span class="badge" style="font-size:9px;background:rgba(108,117,125,0.15);color:var(--muted);border:1px solid rgba(108,117,125,0.3)">♻️ Re-eval</span>',
@@ -3694,7 +4366,7 @@ function renderTop15List(ranked, aiReason) {
 
     // Cluster type badge
     const clusterBadge = resurf && resurf.cluster
-      ? `<span class="badge" style="font-size:9px;background:rgba(0,212,170,0.1);color:var(--accent);border:1px solid rgba(0,212,170,0.2)">${{ nil: '🏆 NIL', funding: '💰 Funding', hire: '👤 Hire', campaign: '📣 Campaign', launch: '🚀 Launch', retail: '🏪 Retail', news: '📰 News' }[resurf.cluster.cluster_type] || '📡 Signal'}</span>`
+      ? `<span class="badge" style="font-size:9px;background:rgba(16,185,129,0.1);color:var(--accent);border:1px solid rgba(16,185,129,0.2)">${{ nil: '🏆 NIL', funding: '💰 Funding', hire: '👤 Hire', campaign: '📣 Campaign', launch: '🚀 Launch', retail: '🏪 Retail', news: '📰 News' }[resurf.cluster.cluster_type] || '📡 Signal'}</span>`
       : '';
 
     const whyNow = a.whyNow || a.whyToday || '';
@@ -3722,7 +4394,7 @@ function renderTop15List(ranked, aiReason) {
         ${resurfDetail}
       </div>
       <div style="text-align:right;flex-shrink:0">
-        <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:${getNILColor(a.score)}">${a.score}</div>
+        <div style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:800;color:${getNILColor(a.score)}">${a.score}</div>
         <div style="font-size:10px;color:var(--muted)">fit score</div>
       </div>
       <div class="top15-actions">
@@ -3887,16 +4559,17 @@ Rank the top 15 for today. Respond ONLY in JSON:
 // Schedule auto-refresh at 8am EST every day
 function scheduleTop15Refresh() {
   const now = new Date();
-  // Convert to EST
-  const estOffset = -5 * 60; // EST is UTC-5
+  const estOffset = -5 * 60;
   const estNow = new Date(now.getTime() + (now.getTimezoneOffset() + estOffset) * 60000);
   const next8am = new Date(estNow);
   next8am.setHours(8, 0, 0, 0);
-  if (estNow >= next8am) next8am.setDate(next8am.getDate() + 1); // already past 8am today
+  if (estNow >= next8am) next8am.setDate(next8am.getDate() + 1);
   const msUntil8am = next8am - estNow;
   setTimeout(() => {
-    refreshTop15(false);
-    setInterval(() => refreshTop15(false), 24 * 60 * 60 * 1000); // then every 24h
+    localStorage.removeItem(INTENT_TOP15_KEY);
+    loadAndRenderIntentTop15(true);
+    refreshMarketFeed(true);
+    setInterval(() => { localStorage.removeItem(INTENT_TOP15_KEY); loadAndRenderIntentTop15(true); refreshMarketFeed(true); }, 24 * 60 * 60 * 1000);
   }, msUntil8am);
 }
 
@@ -3946,7 +4619,7 @@ function scoreContact(person) {
     'head of social','vp social','director of social media',
     'nil ','nil manager','nil director','athlete marketing',
     'sports marketing','head of sports','vp sports'];
-  if (t1.some(k => all.includes(k))) { score = 88 + Math.floor(Math.random()*10); tier = 'Decision Maker'; tierColor = '#00d4aa'; }
+  if (t1.some(k => all.includes(k))) { score = 88 + Math.floor(Math.random()*10); tier = 'Decision Maker'; tierColor = '#10b981'; }
 
   // TIER 2 — close to budget, likely owns campaigns (60-79)
   else {
@@ -3988,7 +4661,7 @@ function renderContactCards(people, accountId) {
     var aid = accountId || '';
 
     var emailBadge = email
-      ? '<span style="font-size:11px;background:rgba(0,212,170,0.1);border:1px solid rgba(0,212,170,0.2);color:#00d4aa;padding:3px 9px;border-radius:4px;font-family:monospace">\u2709 ' + email + '</span>'
+      ? '<span style="font-size:11px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);color:#10b981;padding:3px 9px;border-radius:4px;font-family:monospace">\u2709 ' + email + '</span>'
       : '<span style="font-size:11px;background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--muted);padding:3px 9px;border-radius:4px;font-family:monospace">' + (emailStatus === 'verified' ? '\u2709 Verified (unlock in Apollo)' : emailStatus === 'guessed' ? '\u2709 Guessed available' : '\u2709 Not unlocked') + '</span>';
 
     var linkedinBadge = p.linkedin_url
@@ -4005,7 +4678,7 @@ function renderContactCards(people, accountId) {
     return '<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;position:relative;overflow:hidden">'
       + '<div style="position:absolute;top:0;left:0;width:' + scoreBar + '%;height:3px;background:' + tc + ';border-radius:0"></div>'
       + '<div style="display:flex;align-items:flex-start;gap:12px">'
-        + '<div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,' + tc + '33,' + tc + '11);border:2px solid ' + tc + '44;display:flex;align-items:center;justify-content:center;font-family:\'Syne\',sans-serif;font-size:14px;font-weight:800;color:' + tc + ';flex-shrink:0">' + initials + '</div>'
+        + '<div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,' + tc + '33,' + tc + '11);border:2px solid ' + tc + '44;display:flex;align-items:center;justify-content:center;font-family:\'Outfit\',sans-serif;font-size:14px;font-weight:800;color:' + tc + ';flex-shrink:0">' + initials + '</div>'
         + '<div style="flex:1;min-width:0">'
           + '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:3px">'
             + '<span style="font-weight:700;font-size:14px;color:var(--text)">' + nameClean + '</span>'
@@ -4017,7 +4690,7 @@ function renderContactCards(people, accountId) {
           + '</div>'
         + '</div>'
         + '<div style="flex-shrink:0;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:8px">'
-          + '<div style="font-family:\'Syne\',sans-serif;font-size:22px;font-weight:800;color:' + tc + ';line-height:1">' + p._score + '</div>'
+          + '<div style="font-family:\'Outfit\',sans-serif;font-size:22px;font-weight:800;color:' + tc + ';line-height:1">' + p._score + '</div>'
           + '<div style="font-size:9px;color:var(--muted);font-family:monospace;letter-spacing:0.04em">RELEVANCE</div>'
           + '<button class="btn btn-xs btn-primary" style="margin-top:4px" onclick="composeForContact(\'' + aid + '\',\'' + escapedName + '\',\'' + escapedTitle + '\')">&#9997;&#65039; Compose</button>'
         + '</div>'
@@ -4074,7 +4747,7 @@ async function fetchApolloContacts(domain, key, targetId, accountId) {
     target.innerHTML =
       `<div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;align-items:center">
         <span style="font-size:12px;color:var(--muted2);font-family:monospace">${people.length} contacts found</span>
-        ${topTier > 0 ? `<span style="font-size:10px;background:rgba(0,212,170,0.12);color:#00d4aa;padding:2px 8px;border-radius:4px;font-weight:700">${topTier} Decision Makers</span>` : ''}
+        ${topTier > 0 ? `<span style="font-size:10px;background:rgba(16,185,129,0.12);color:#10b981;padding:2px 8px;border-radius:4px;font-weight:700">${topTier} Decision Makers</span>` : ''}
         ${midTier > 0 ? `<span style="font-size:10px;background:rgba(200,168,75,0.12);color:#c8a84b;padding:2px 8px;border-radius:4px;font-weight:700">${midTier} Key Influencers</span>` : ''}
         <span style="font-size:10px;color:var(--muted);margin-left:auto">Sorted by relevance score</span>
       </div>` +
@@ -4206,7 +4879,7 @@ function contactRelevanceScore(person, accountId) {
 
   // Tier labels
   let tier, tierColor;
-  if (score >= 75) { tier = 'Decision Maker'; tierColor = '#00d4aa'; }
+  if (score >= 75) { tier = 'Decision Maker'; tierColor = '#10b981'; }
   else if (score >= 55) { tier = 'Key Influencer'; tierColor = '#c8a84b'; }
   else if (score >= 30) { tier = 'On Radar'; tierColor = '#7c8da6'; }
   else { tier = 'Low Fit'; tierColor = '#555'; }
@@ -4273,7 +4946,7 @@ function renderComposerContacts(accountId) {
     const isSelected = prevSelected.includes(p.id);
     const tc = p._tierColor;
 
-    return `<label style="display:flex;align-items:flex-start;gap:8px;padding:8px 10px;background:${isSelected ? 'rgba(0,212,170,0.06)' : 'var(--surface)'};border:1px solid ${isSelected ? 'rgba(0,212,170,0.25)' : 'var(--border)'};border-radius:8px;margin-bottom:5px;cursor:pointer;transition:all 0.12s" onmouseenter="this.style.borderColor='rgba(0,212,170,0.3)'" onmouseleave="this.style.borderColor='${isSelected ? 'rgba(0,212,170,0.25)' : 'var(--border)'}'" >
+    return `<label style="display:flex;align-items:flex-start;gap:8px;padding:8px 10px;background:${isSelected ? 'rgba(16,185,129,0.06)' : 'var(--surface)'};border:1px solid ${isSelected ? 'rgba(16,185,129,0.25)' : 'var(--border)'};border-radius:8px;margin-bottom:5px;cursor:pointer;transition:all 0.12s" onmouseenter="this.style.borderColor='rgba(16,185,129,0.3)'" onmouseleave="this.style.borderColor='${isSelected ? 'rgba(16,185,129,0.25)' : 'var(--border)'}'" >
       <input type="checkbox" ${isSelected ? 'checked' : ''} data-person-id="${p.id}" data-name="${name.replace(/"/g, '&quot;')}" data-title="${(p.title || '').replace(/"/g, '&quot;')}" data-email="${email || ''}" data-linkedin="${p.linkedin_url || ''}" data-score="${p._score}" data-why="${(p._why || '').replace(/"/g, '&quot;')}" onchange="updateContactSelection()" style="margin-top:4px;flex-shrink:0;accent-color:var(--accent)">
       <div style="flex:1;min-width:0">
         <div style="display:flex;align-items:center;gap:6px">
@@ -4410,7 +5083,7 @@ function loadComposerAccount() {
         <div style="font-size:12px;color:var(--muted2)">${account.vertical} · ${account.territory}</div>
       </div>
       <div style="margin-left:auto;text-align:right">
-        <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:${getNILColor(score)}">${score}</div>
+        <div style="font-family:'Outfit',sans-serif;font-size:22px;font-weight:800;color:${getNILColor(score)}">${score}</div>
         <div style="font-size:10px;color:var(--muted)">NIL Score</div>
       </div>
     </div>
@@ -4430,7 +5103,7 @@ function loadComposerAccount() {
       resultsEl.innerHTML =
         `<div style="display:flex;gap:6px;margin-bottom:10px;align-items:center">
           <span style="font-size:11px;color:var(--muted2);font-family:monospace">${saved.length} saved contacts</span>
-          ${topCount > 0 ? `<span style="font-size:10px;background:rgba(0,212,170,0.12);color:#00d4aa;padding:2px 7px;border-radius:4px;font-weight:700">${topCount} Decision Makers</span>` : ''}
+          ${topCount > 0 ? `<span style="font-size:10px;background:rgba(16,185,129,0.12);color:#10b981;padding:2px 7px;border-radius:4px;font-weight:700">${topCount} Decision Makers</span>` : ''}
           <button class="btn btn-xs btn-ghost" style="margin-left:auto;font-size:10px" onclick="lookupApolloContacts()">↻ Refresh</button>
         </div>` +
         renderContactCards(saved, account.id);
@@ -4463,13 +5136,13 @@ function buildComposeLogBar() {
   // Store for button callbacks
   window._composeLogAcctId = acctId;
   window._composeLogAcctName = acctName;
-  return '<div style="background:rgba(0,212,170,0.05);border:1px solid rgba(0,212,170,0.15);border-radius:4px;padding:11px 14px;margin-top:14px">'
-    + '<div style="font-size:10px;font-weight:700;color:#00d4aa;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px">Log This Send</div>'
+  return '<div style="background:rgba(16,185,129,0.05);border:1px solid rgba(16,185,129,0.15);border-radius:4px;padding:11px 14px;margin-top:14px">'
+    + '<div style="font-size:10px;font-weight:700;color:#10b981;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px">Log This Send</div>'
     + '<div style="display:flex;gap:6px;flex-wrap:wrap">'
     + '<button onclick="composeLog(this)" data-logtype="email" style="background:#0078d4;color:#fff;border:none;border-radius:20px;padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer">📧 Email Sent</button>'
     + '<button onclick="composeLog(this)" data-logtype="call" style="background:#1a1a1a;color:#fff;border:1px solid #333;border-radius:20px;padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer">📞 Called</button>'
     + '<button onclick="composeLog(this)" data-logtype="linkedin" style="background:#1a1a1a;color:#0077b5;border:1px solid #0077b5;border-radius:20px;padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer">💼 LinkedIn DM</button>'
-    + '<button onclick="composeLog(this)" data-logtype="meeting" style="background:#1a1a1a;color:#00d4aa;border:1px solid #00d4aa;border-radius:20px;padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer">📅 Meeting</button>'
+    + '<button onclick="composeLog(this)" data-logtype="meeting" style="background:#1a1a1a;color:#10b981;border:1px solid #10b981;border-radius:20px;padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer">📅 Meeting</button>'
     + '</div>'
     + '</div>';
 }
@@ -4762,9 +5435,9 @@ function renderComposerOutput(tab, text, account, contactName) {
       function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
       return '<div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:12px">' +
         '<div style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border2)">' +
-          '<div style="font-family:\'Syne\',sans-serif;font-size:30px;font-weight:800;color:var(--border2);line-height:1;min-width:36px">0'+(i+1)+'</div>' +
+          '<div style="font-family:\'Outfit\',sans-serif;font-size:30px;font-weight:800;color:var(--border2);line-height:1;min-width:36px">0'+(i+1)+'</div>' +
           '<div>' +
-            '<div style="font-family:\'Syne\',sans-serif;font-size:15px;font-weight:800;color:var(--text);letter-spacing:-0.01em;text-transform:uppercase">' + icon + ' &ldquo;' + esc(c.name) + '&rdquo;</div>' +
+            '<div style="font-family:\'Outfit\',sans-serif;font-size:15px;font-weight:800;color:var(--text);letter-spacing:-0.01em;text-transform:uppercase">' + icon + ' &ldquo;' + esc(c.name) + '&rdquo;</div>' +
             '<div style="font-size:11px;color:var(--accent);font-family:monospace;margin-top:2px;letter-spacing:0.04em">' + esc(c.platform||'Platform TBD') + '</div>' +
           '</div>' +
           '<span style="margin-left:auto;padding:3px 8px;border-radius:4px;font-size:10px;font-weight:700;background:'+color+'22;color:'+color+'">' +
@@ -4777,7 +5450,7 @@ function renderComposerOutput(tab, text, account, contactName) {
           '<div><div style="color:var(--muted2);font-family:monospace;font-size:10px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:3px">Platform &amp; Format</div>' +
           '<div style="font-size:13px;color:var(--text)">' + esc(c.platform||'TikTok / Instagram') + '</div></div>' +
         '</div>' +
-        '<div style="padding:12px 16px;background:rgba(0,212,170,0.06);border-top:1px solid var(--border2);font-size:13px;color:var(--text2);line-height:1.5;font-style:italic">' +
+        '<div style="padding:12px 16px;background:rgba(16,185,129,0.06);border-top:1px solid var(--border2);font-size:13px;color:var(--text2);line-height:1.5;font-style:italic">' +
           '&ldquo;' + esc(c.angle||c.description||'') + '&rdquo;' +
         '</div>' +
         (c.why ? '<div style="padding:10px 16px;background:rgba(200,168,75,0.07);border-top:1px solid var(--border2);font-size:11px;color:#c8a84b;display:flex;gap:8px">&#128161; <span><strong>Why ' + esc(co) + ' now:</strong> ' + esc(c.why) + '</span></div>' : '') +
@@ -4791,7 +5464,7 @@ function renderComposerOutput(tab, text, account, contactName) {
       {key:'PERMISSION OPENER', icon:'&#127908;', color:'#3490dc', tag:'OPENER'},
       {key:'REVERSE PITCH', icon:'&#128260;', color:'#e3342f', tag:'PROBLEM LEAD'},
       {key:'DISCOVERY QUESTIONS', icon:'&#128269;', color:'#d69e2e', tag:'DISCOVERY'},
-      {key:'KEY TALKING POINTS', icon:'&#9889;', color:'#00d4aa', tag:'TALKING POINTS'},
+      {key:'KEY TALKING POINTS', icon:'&#9889;', color:'#10b981', tag:'TALKING POINTS'},
       {key:'OBJECTION RESPONSES', icon:'&#128737;', color:'#9f7aea', tag:'OBJECTIONS'},
       {key:'VALUE CLOSE', icon:'&#127919;', color:'#38a169', tag:'CLOSE'}
     ];
@@ -4967,8 +5640,8 @@ function renderComposerOutput(tab, text, account, contactName) {
         + '</div>'
         // Ghost number + name
         + '<div style="position:relative;margin-bottom:12px">'
-          + '<div style="position:absolute;top:-18px;left:-6px;font-size:80px;font-weight:900;color:rgba(0,0,0,0.07);font-family:\'Syne\',serif;line-height:1;user-select:none;pointer-events:none">' + numStr + '</div>'
-          + '<div style="font-family:\'Syne\',Georgia,serif;font-size:26px;font-weight:900;color:#1a1a1a;line-height:1.15;letter-spacing:-0.02em;position:relative;z-index:1">' + esc(conceptName) + '</div>'
+          + '<div style="position:absolute;top:-18px;left:-6px;font-size:80px;font-weight:900;color:rgba(0,0,0,0.07);font-family:\'Outfit\',serif;line-height:1;user-select:none;pointer-events:none">' + numStr + '</div>'
+          + '<div style="font-family:\'Outfit\',Georgia,serif;font-size:26px;font-weight:900;color:#1a1a1a;line-height:1.15;letter-spacing:-0.02em;position:relative;z-index:1">' + esc(conceptName) + '</div>'
         + '</div>'
         // Description
         + '<div style="font-size:13px;color:#444;line-height:1.65;margin-bottom:18px;max-width:380px">' + esc(description) + '</div>'
@@ -5024,7 +5697,7 @@ function renderComposerOutput(tab, text, account, contactName) {
       }).join('');
       flightHtml =
         '<div style="padding:28px 30px;background:rgba(0,0,0,0.25);border-bottom:1px solid rgba(255,255,255,0.06)">' +
-          '<div style="font-family:\'Syne\',sans-serif;font-size:22px;font-weight:800;color:#fff;margin-bottom:4px;letter-spacing:-0.02em">6-WEEK FLIGHT MODEL</div>' +
+          '<div style="font-family:\'Outfit\',sans-serif;font-size:22px;font-weight:800;color:#fff;margin-bottom:4px;letter-spacing:-0.02em">6-WEEK FLIGHT MODEL</div>' +
           '<div style="font-size:11px;color:#c8a84b;font-family:monospace;margin-bottom:20px;letter-spacing:0.06em">NIL ATHLETE CREATIVE &middot; MAPPED BY PLATFORM &amp; FUNNEL STAGE</div>' +
           '<div style="display:grid;grid-template-columns:150px repeat(6,1fr);gap:5px;align-items:center">' +
             '<div></div>' +
@@ -5140,7 +5813,7 @@ function renderComposerOutput(tab, text, account, contactName) {
       emailHtml =
         '<div style="padding:28px 36px 24px;background:#f5f2ec">'
           + '<div style="font-size:10px;color:#999;font-family:monospace;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:5px">The Outreach</div>'
-          + '<div style="font-family:\'Syne\',Impact,sans-serif;font-size:30px;font-weight:900;color:#1a1a1a;letter-spacing:-0.01em;margin-bottom:20px;text-transform:uppercase">The Email</div>'
+          + '<div style="font-family:\'Outfit\',Impact,sans-serif;font-size:30px;font-weight:900;color:#1a1a1a;letter-spacing:-0.01em;margin-bottom:20px;text-transform:uppercase">The Email</div>'
           // Outlook window
           + '<div style="background:#fff;border-radius:4px;box-shadow:0 2px 16px rgba(0,0,0,0.10);overflow:hidden;max-width:600px;border:1px solid #d0d0d0">'
             // Outlook blue top bar
@@ -5221,8 +5894,8 @@ function renderComposerOutput(tab, text, account, contactName) {
             '</div>' +
           '</div>' +
           '<div style="text-align:center">' +
-            '<div style="font-family:\'Syne\',sans-serif;font-size:18px;font-weight:800;color:rgba(255,255,255,0.9);line-height:1;letter-spacing:0.02em">ATHLETE-LED</div>' +
-            '<div style="font-family:\'Syne\',sans-serif;font-size:18px;font-weight:800;color:#c8a84b;line-height:1;letter-spacing:0.02em">CREATIVE CONCEPTS</div>' +
+            '<div style="font-family:\'Outfit\',sans-serif;font-size:18px;font-weight:800;color:rgba(255,255,255,0.9);line-height:1;letter-spacing:0.02em">ATHLETE-LED</div>' +
+            '<div style="font-family:\'Outfit\',sans-serif;font-size:18px;font-weight:800;color:#c8a84b;line-height:1;letter-spacing:0.02em">CREATIVE CONCEPTS</div>' +
           '</div>' +
           '<div style="font-size:10px;color:rgba(255,255,255,0.35);font-family:monospace;text-align:right;text-transform:uppercase">' + concepts2.length + ' Concepts<br>NIL Partnership</div>' +
         '</div>' +
@@ -5244,7 +5917,7 @@ function downloadBriefPDF() {
 
   // Build a print-ready HTML document
   var styles = `
-    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Mono:wght@400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&family=JetBrains+Mono:wght@400;500&display=swap');
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: #111; color: #fff; }
     @page { size: A4; margin: 0; }
@@ -5765,14 +6438,14 @@ Return ONLY valid JSON, no other text:
         <!-- Score Header -->
         <div style="padding:18px 20px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between">
           <div>
-            <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800">${brand}</div>
+            <div style="font-family:'Outfit',sans-serif;font-size:22px;font-weight:800">${brand}</div>
             <div style="font-size:12px;color:var(--muted2);margin-top:2px">${result.vertical||'Unknown'}</div>
             <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
               ${(result.athlete_sports||[]).map(s=>`<span class="badge badge-accent">${s}</span>`).join('')}
             </div>
           </div>
           <div style="text-align:center">
-            <div style="font-family:'Syne',sans-serif;font-size:52px;font-weight:800;color:${color};line-height:1">${result.nil_score}</div>
+            <div style="font-family:'Outfit',sans-serif;font-size:52px;font-weight:800;color:${color};line-height:1">${result.nil_score}</div>
             <div style="font-size:10px;color:var(--muted);letter-spacing:0.08em">NIL FIT</div>
             <span class="badge ${result.recommend?'badge-green':'badge-muted'}" style="margin-top:4px">${result.recommend?'✓ Recommended':'Not Recommended'}</span>
           </div>
@@ -5791,7 +6464,7 @@ Return ONLY valid JSON, no other text:
             <div style="font-size:10px;font-weight:700;color:var(--muted2);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:5px">Why It Fits</div>
             <div style="font-size:13px;line-height:1.6;color:var(--text1)">${result.why_good_fit||'—'}</div>
           </div>
-          <div style="background:rgba(0,212,170,0.05);border:1px solid rgba(0,212,170,0.2);border-radius:var(--radius);padding:12px;margin-bottom:14px">
+          <div style="background:rgba(16,185,129,0.05);border:1px solid rgba(16,185,129,0.2);border-radius:var(--radius);padding:12px;margin-bottom:14px">
             <div style="font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:5px">🎯 Activation Idea</div>
             <div style="font-size:13px;line-height:1.6;color:var(--text1)">${result.activation_idea||'—'}</div>
           </div>
@@ -6081,12 +6754,12 @@ function renderApolloContacts(safeId, people, nilResult) {
   const midTier = scored.filter(p => p._score >= 55 && p._score < 75).length;
 
   container.innerHTML = `
-    <div style="font-size:9px;color:var(--accent);font-family:'DM Mono',monospace;letter-spacing:0.08em;margin-bottom:6px;display:flex;align-items:center;gap:6px">
+    <div style="font-size:9px;color:var(--accent);font-family:'JetBrains Mono',monospace;letter-spacing:0.08em;margin-bottom:6px;display:flex;align-items:center;gap:6px">
       <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block"></span>
       LIVE FROM APOLLO · ${people.length} CONTACTS
     </div>
     <div style="display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap">
-      ${topTier > 0 ? `<span style="font-size:10px;background:rgba(0,212,170,0.12);color:#00d4aa;padding:2px 8px;border-radius:4px;font-weight:700">${topTier} Decision Makers</span>` : ''}
+      ${topTier > 0 ? `<span style="font-size:10px;background:rgba(16,185,129,0.12);color:#10b981;padding:2px 8px;border-radius:4px;font-weight:700">${topTier} Decision Makers</span>` : ''}
       ${midTier > 0 ? `<span style="font-size:10px;background:rgba(200,168,75,0.12);color:#c8a84b;padding:2px 8px;border-radius:4px;font-weight:700">${midTier} Key Influencers</span>` : ''}
     </div>
     ${scored.slice(0, 12).map((p, i) => {
@@ -6105,7 +6778,7 @@ function renderApolloContacts(safeId, people, nilResult) {
             <span style="font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;background:${tc}22;color:${tc};font-family:monospace">${p._score} · ${p._tier}</span>
             ${linkedinUrl ? `<a href="${linkedinUrl}" target="_blank" style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:3px;background:#0077b5;text-decoration:none"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>` : ''}
           </div>
-          <div style="font-size:11px;color:var(--accent);font-family:'DM Mono',monospace;margin-bottom:3px">${(p.title || '—').replace(/</g, '&lt;')}</div>
+          <div style="font-size:11px;color:var(--accent);font-family:'JetBrains Mono',monospace;margin-bottom:3px">${(p.title || '—').replace(/</g, '&lt;')}</div>
           <div style="font-size:10px;color:var(--muted2)">${p._why || ''}</div>
           ${emailDisplay ? `<div style="font-size:10px;color:var(--muted);margin-top:2px;font-family:monospace">✉ ${emailDisplay}</div>` : ''}
         </div>
@@ -6150,7 +6823,7 @@ function renderAiContacts(safeId, aiContacts, errorMsg, brandName) {
       <div style="font-size:11px;font-weight:800;color:var(--muted2);text-transform:uppercase;letter-spacing:0.08em">ICP Buyer Archetypes</div>
       <button onclick="promptAddContact('${safeId}')" style="background:var(--accent);color:#000;border:none;border-radius:6px;padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer">+ Add Contact</button>
     </div>
-    <div style="font-size:9px;color:var(--accent4);font-family:'DM Mono',monospace;letter-spacing:0.06em;margin-bottom:12px;display:flex;align-items:center;gap:6px">💎 FIND REAL CONTACTS AT ${(brandName||'').toUpperCase()}</div>`;
+    <div style="font-size:9px;color:var(--accent4);font-family:'JetBrains Mono',monospace;letter-spacing:0.06em;margin-bottom:12px;display:flex;align-items:center;gap:6px">💎 FIND REAL CONTACTS AT ${(brandName||'').toUpperCase()}</div>`;
 
   // Build archetypes HTML
   const archetypesHtml = archetypes.map((a, i) => {
@@ -6161,7 +6834,7 @@ function renderAiContacts(safeId, aiContacts, errorMsg, brandName) {
       <div style="width:36px;height:36px;border-radius:50%;background:${a.color}18;border:1px solid ${a.color}40;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">${a.icon}</div>
       <div style="flex:1;min-width:0">
         <div style="font-size:14px;font-weight:700;color:var(--accent);margin-bottom:3px">${a.label}</div>
-        <div style="font-size:10px;color:var(--muted2);font-family:'DM Mono',monospace;margin-bottom:6px">${a.titles}</div>
+        <div style="font-size:10px;color:var(--muted2);font-family:'JetBrains Mono',monospace;margin-bottom:6px">${a.titles}</div>
         <div style="font-size:12px;color:var(--muted2);line-height:1.5">${a.desc}</div>
       </div>
       <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0">
@@ -6290,7 +6963,7 @@ function editDiscoveryEmail(safeId) {
     toast('Email saved', 'success');
   } else {
     bodyEl.contentEditable = 'true';
-    bodyEl.style.background = 'rgba(0,212,170,0.04)';
+    bodyEl.style.background = 'rgba(16,185,129,0.04)';
     bodyEl.style.border = '1px solid var(--accent)';
     bodyEl.style.borderRadius = '4px';
     bodyEl.style.padding = '8px';
@@ -6342,7 +7015,7 @@ Be honest. Low scores for irrelevant or oversaturated brands.`}]
       scored.map((r,i)=>{
         const color = r.nil_score>=75?'var(--green)':r.nil_score>=50?'var(--gold)':'var(--muted)';
         return `<div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:8px">
-          <div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:${color};width:36px;text-align:center">${r.nil_score}</div>
+          <div style="font-family:'Outfit',sans-serif;font-size:20px;font-weight:800;color:${color};width:36px;text-align:center">${r.nil_score}</div>
           <div style="flex:1">
             <div style="font-weight:700;font-size:14px">${r.brand}</div>
             <div style="font-size:12px;color:var(--muted2)">${r.one_liner||''}</div>
@@ -6529,7 +7202,7 @@ function renderComposerICP() {
     const apolloTitleParam = (a.apolloTitles || []).map(t => encodeURIComponent(t)).join('&person_titles[]=');
     const apolloUrl = `https://app.apollo.io/#/people?q_organization_name=${encodeURIComponent(company)}&person_titles[]=${apolloTitleParam}`;
     const isFirst = i === 0;
-    return `<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:${isFirst?'rgba(0,212,170,0.08)':'var(--surface)'};border:1px solid ${isFirst?'rgba(0,212,170,0.25)':'var(--border)'};border-radius:8px;margin-bottom:6px;cursor:pointer;transition:all 0.15s" onclick="icpFillContact('${a.titles.split(' · ')[0]}','${a.label}')">
+    return `<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:${isFirst?'rgba(16,185,129,0.08)':'var(--surface)'};border:1px solid ${isFirst?'rgba(16,185,129,0.25)':'var(--border)'};border-radius:8px;margin-bottom:6px;cursor:pointer;transition:all 0.15s" onclick="icpFillContact('${a.titles.split(' · ')[0]}','${a.label}')">
       <div style="font-size:16px;flex-shrink:0">${a.icon}</div>
       <div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:700;color:var(--accent)">${a.label}</div><div style="font-size:10px;color:var(--muted2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${a.titles.split(' · ').slice(0,3).join(' · ')}</div></div>
       <a href="${liUrl}" target="_blank" onclick="event.stopPropagation()" style="display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:#0077b5;flex-shrink:0;text-decoration:none"><svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
